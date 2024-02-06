@@ -1,0 +1,1 @@
+This repository contains major scripts used in MICC-seq data analysis. At the start of each file, dependencies like essential libraries or fixed paths to software and data files are declared, which are required for the scripts to function properly.
