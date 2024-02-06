@@ -1,0 +1,225 @@
+## Filter
+Filter	bowtie2	/ifswh4/BC_PUB_T1/Pipeline/Software/miniconda3/envs/bowtie2/bin/bowtie2
+Filter	fqcheck	/ifswh4/BC_PUB_T1/Software/image/fqcheck
+Filter	soapnuke	/ifswh4/BC_PUB_T1/Software/image/SOAPnuke/SOAPnuke.1.6.5
+Filter	soapnuke_new	/ifswh4/BC_PUB_T1/Software/image/SOAPnuke/SOAPnuke.2.2.1
+## Reference
+Reference	gatk	/ifswh4/BC_PUB_T1/Pipeline/Software/other/gatk/miniconda3/envs/gatk/bin/gatk
+Reference	gatk_profile	/ifswh4/BC_PUB_T1/Pipeline/Software/other/gatk/miniconda3/envs/gatk/profile
+Reference	samtools	/ifswh4/BC_PUB_T1/Pipeline/Software/miniconda3/envs/samtools/bin/samtools
+Reference	gffread	/ifswh4/BC_PUB_T1/Pipeline/Software/miniconda3/envs/cufflinks/bin/gffread
+## CircRNA
+CircRNA	samtools	/ifswh4/BC_PUB_T1/Pipeline/Software/miniconda3/envs/samtools/bin/samtools
+CircRNA	seqtk	/ifswh4/BC_PUB_T1/Pipeline/RNA/RNA_lncRNA/RNA_lncRNA_2023a/bin_v4/Module/CircRNA/software/seqtk/seqtk
+CircRNA	bwa	/ifswh4/BC_PUB_T1/Pipeline/RNA/RNA_lncRNA/RNA_lncRNA_2023a/bin_v4/Module/CircRNA/software/bwa-0.7.12/bwa
+CircRNA	CIRI	/ifswh4/BC_PUB_T1/Pipeline/RNA/RNA_lncRNA/RNA_lncRNA_2023a/bin_v4/Module/CircRNA/software/CIRI_v2.0.5/CIRI_v2.0.5.pl
+CircRNA	bedtools	/ifswh4/BC_PUB_T1/Pipeline/RNA/RNA_lncRNA/RNA_lncRNA_2023a/bin_v4/Module/CircRNA/software/bedtools
+CircRNA	convert	/usr/bin/convert
+CircRNA	Rscript	/ifswh4/BC_PUB_T1/Pipeline/Software/other/r/miniconda3/envs/r-base.4.3.1/bin/Rscript
+## Alignment_hisat
+Alignment_hisat	gatk_profile	/ifswh4/BC_PUB_T1/Pipeline/Software/other/gatk/miniconda3/envs/gatk/profile
+Alignment_hisat	gatk	/ifswh4/BC_PUB_T1/Pipeline/Software/other/gatk/miniconda3/envs/gatk/bin/gatk
+Alignment_hisat	hisat2	/ifswh4/BC_PUB_T1/Pipeline/Software/miniconda3/envs/hisat2/bin/hisat2
+Alignment_hisat	samtools	/ifswh4/BC_PUB_T1/Pipeline/Software/miniconda3/envs/samtools/bin/samtools
+Alignment_hisat	hisat2-build	/ifswh4/BC_PUB_T1/Pipeline/Software/miniconda3/envs/hisat2/bin/hisat2-build
+Alignment_hisat	rseqc_profile	/ifswh4/BC_PUB_T1/Pipeline/Software/other/rseqc/miniconda3/envs/rseqc/profile
+Alignment_hisat	python	/ifswh4/BC_PUB_T1/Pipeline/Software/other/rseqc/miniconda3/envs/rseqc/bin/python
+Alignment_hisat	infer_experiment	/ifswh4/BC_PUB_T1/Pipeline/Software/other/rseqc/miniconda3/envs/rseqc/bin/infer_experiment.py
+## Alignment_bowtie
+Alignment_bowtie	bowtie2-build	/ifswh4/BC_PUB_T1/Pipeline/Software/miniconda3/envs/bowtie2/bin/bowtie2-build
+Alignment_bowtie	bowtie2	/ifswh4/BC_PUB_T1/Pipeline/Software/miniconda3/envs/bowtie2/bin/bowtie2
+Alignment_bowtie	samtools	/ifswh4/BC_PUB_T1/Pipeline/Software/miniconda3/envs/samtools/bin/samtools
+Alignment_bowtie	rsem_profile	/ifswh4/BC_PUB_T1/Pipeline/Software/miniconda3/envs/rsem/profile
+Alignment_bowtie	rsem-prepare-reference	/ifswh4/BC_PUB_T1/Pipeline/Software/miniconda3/envs/rsem/bin/rsem-prepare-reference
+## Alignment_diamond
+Alignment_diamond	diamond	/ifswh4/BC_PUB_T1/Pipeline/Software/miniconda3/envs/diamond/bin/diamond
+Alignment_diamond	blastn	/ifswh4/BC_PUB_T1/Pipeline/Software/miniconda3/envs/blastn/bin/blastn
+Alignment_diamond	Rscript	/ifswh4/BC_PUB_T1/Pipeline/Software/other/r/miniconda3/envs/r-base.4.3.1/bin/Rscript
+Alignment_diamond	R_LIB	/ifswh4/BC_PUB_T1/Pipeline/Software/other/r/R_LIB
+## Alignment_hmmscan
+Alignment_hmmscan	hmmscan	/ifswh4/BC_PUB_T1/Pipeline/Software/miniconda3/envs/hmmer/bin/hmmscan
+## Alignment_infernal
+Alignment_infernal	cmsearch	/ifswh4/BC_PUB_T1/Pipeline/Software/miniconda3/envs/infernal/bin/cmsearch
+Alignment_infernal	Rscript	/ifswh4/BC_PUB_T1/Pipeline/Software/other/r/miniconda3/envs/r-base.4.3.1/bin/Rscript
+Alignment_infernal	R_LIB	/ifswh4/BC_PUB_T1/Pipeline/Software/other/r/R_LIB
+## Assemble_Stringtie
+Assemble_Stringtie	stringtie_profile	/ifswh4/BC_PUB_T1/Pipeline/Software/miniconda3/envs/stringtie/profile
+Assemble_Stringtie	stringtie	/ifswh4/BC_PUB_T1/Pipeline/Software/miniconda3/envs/stringtie/bin/stringtie
+Assemble_Stringtie	cuffcompare	/ifswh4/BC_PUB_T1/Pipeline/Software/miniconda3/envs/cufflinks/bin/cuffcompare
+Assemble_Stringtie	gffread	/ifswh4/BC_PUB_T1/Pipeline/Software/miniconda3/envs/cufflinks/bin/gffread
+Assemble_Stringtie	samtools	/ifswh4/BC_PUB_T1/Pipeline/Software/miniconda3/envs/samtools/bin/samtools
+## Assemble_Cuffmerge
+Assemble_Cuffmerge	cufflinks_profile	/ifswh4/BC_PUB_T1/Pipeline/Software/miniconda3/envs/cufflinks/profile
+Assemble_Cuffmerge	cuffmerge	/ifswh4/BC_PUB_T1/Pipeline/Software/miniconda3/envs/cufflinks/bin/cuffmerge
+Assemble_Cuffmerge	gffread	/ifswh4/BC_PUB_T1/Pipeline/Software/miniconda3/envs/cufflinks/bin/gffread
+Assemble_Cuffmerge	Rscript	/ifswh4/BC_PUB_T1/Pipeline/Software/other/r/miniconda3/envs/r-base.4.3.1/bin/Rscript
+Assemble_Cuffmerge	R_LIB	/ifswh4/BC_PUB_T1/Pipeline/Software/other/r/R_LIB
+## Assemble_Trinity
+#Assemble_Trinity	Trinity_profile	/ifswh4/BC_PUB_T1/Pipeline/Software/other/trinity/miniconda3/envs/trinity/profile
+#Assemble_Trinity	Trinity	/ifswh4/BC_PUB_T1/Pipeline/Software/other/trinity/miniconda3/envs/trinity/bin/Trinity
+Assemble_Trinity	cdhit_profile	/ifswh4/BC_PUB_T1/Pipeline/Software/CentOS7/cdhit/miniconda3/envs/cdhit/profile
+#Assemble_Trinity	cdhit	/ifswh4/BC_PUB_T1/Pipeline/Software/CentOS7/cdhit/miniconda3/envs/cdhit/bin/cd-hit-est
+Assemble_Trinity	cdhit	/ifswh4/BC_PUB_T1/Pipeline/Software/CentOS7/cdhit/cdhit/cd-hit-est
+Assemble_Trinity	Trinity_profile	/ifswh4/BC_PUB_T1/Pipeline/Software/other/trinity-v2.13.2/miniconda3/envs/trinity/profile
+Assemble_Trinity	Trinity	/ifswh4/BC_PUB_T1/Pipeline/Software/other/trinity-v2.13.2/miniconda3/envs/trinity/bin/Trinity
+Assemble_Trinity	Rscript	/ifswh4/BC_PUB_T1/Pipeline/Software/other/r/miniconda3/envs/r-base.4.3.1/bin/Rscript
+Assemble_Trinity	R_LIB	/ifswh4/BC_PUB_T1/Pipeline/Software/other/r/R_LIB
+Assemble_Trinity	seqclean	/ifswh4/BC_PUB_T1/Pipeline/RNA/DrTom_bigRNA/Assemble/Assemble_Trinity/bin/seqclean_x86_64/seqclean/seqclean
+Assemble_Trinity	solar	/ifswh4/BC_PUB_T1/Pipeline/RNA/DrTom_bigRNA/Assemble/Assemble_Trinity/bin/solar.pl
+Assemble_Trinity	tgicl_nozmsort	/ifswh4/BC_PUB_T1/Pipeline/RNA/DrTom_bigRNA/Assemble/Assemble_Trinity/bin/tgicl/tgicl.nozmsort.pl
+Assemble_Trinity	makeblastdb	/ifswh4/BC_PUB_T1/Pipeline/Software/miniconda3/envs/blastn/bin/makeblastdb
+Assemble_Trinity	blastn	/ifswh4/BC_PUB_T1/Pipeline/Software/miniconda3/envs/blastn/bin/blastn
+Assemble_Trinity	busco_profile	/ifswh4/BC_PUB_T1/Pipeline/Software/miniconda3/envs/busco/profile
+Assemble_Trinity	busco	/ifswh4/BC_PUB_T1/Pipeline/Software/miniconda3/envs/busco/bin/busco
+Assemble_Trinity	python	/ifswh4/BC_PUB_T1/Pipeline/Software/miniconda3/envs/busco/bin/python3
+Assemble_Trinity	generate_plot	/ifswh4/BC_PUB_T1/Pipeline/Software/miniconda3/envs/busco/bin/generate_plot.py
+Assemble_Trinity	soapnuke	/ifswh4/BC_PUB_T1/Software/image/SOAPnuke/SOAPnuke.2.2.1
+
+## Assemble_Assessment_SSR
+Assemble_Assessment_SSR	formatdb	/ifswh4/BC_PUB_T1/Pipeline/Software/other/blast-2.2.23/bin/formatdb
+Assemble_Assessment_SSR	blastall	/ifswh4/BC_PUB_T1/Pipeline/Software/other/blast-2.2.23/bin/blastall
+Assemble_Assessment_SSR	Rscript	/ifswh4/BC_PUB_T1/Pipeline/Software/other/r/miniconda3/envs/r-base.4.3.1/bin/Rscript
+Assemble_Assessment_SSR	R_LIB	/ifswh4/BC_PUB_T1/Pipeline/Software/other/r/R_LIB
+Assemble_Assessment_SSR	primer3	/ifswh4/BC_PUB_T1/Pipeline/Software/miniconda3/envs/primer3/bin/primer3_core
+Assemble_Assessment_SSR	blastn	/ifswh4/BC_PUB_T1/Pipeline/Software/miniconda3/envs/blastn/bin/blastn
+Assemble_Assessment_SSR	makeblastdb	/ifswh4/BC_PUB_T1/Pipeline/Software/miniconda3/envs/blastn/bin/makeblastdb
+## Predict_mRNA_lncRNA_CNCI
+Predict_mRNA_lncRNA_CNCI	CNCI	/ifswh4/BC_PUB_T1/Pipeline/Software/other/CNCI/CNCI.py
+Predict_mRNA_lncRNA_CNCI	python	/ifswh4/BC_PUB_T1/Pipeline/Software/miniconda3/envs/cpc2/bin/python
+## Predict_mRNA_lncRNA_LGC
+Predict_mRNA_lncRNA_LGC	python	/ifswh4/BC_PUB_T1/Pipeline/Software/miniconda3/envs/cpc2/bin/python
+Predict_mRNA_lncRNA_LGC	LGC	/ifswh4/BC_PUB_T1/Pipeline/RNA/DrTom_bigRNA/Predict/Predict_mRNA_lncRNA/Predict_mRNA_lncRNA_LGC/bin/LGC-1.0.py
+## Predict_mRNA_lncRNA_CPC2
+Predict_mRNA_lncRNA_CPC2	cpc2	/ifswh4/BC_PUB_T1/Pipeline/Software/miniconda3/envs/cpc2/bin/CPC2.py
+Predict_mRNA_lncRNA_CPC2	python	/ifswh4/BC_PUB_T1/Pipeline/Software/miniconda3/envs/cpc2/bin/python
+## Predict_mRNA_lncRNA_pfam
+Predict_mRNA_lncRNA_pfam	hmmscan	/ifswh4/BC_PUB_T1/Pipeline/Software/miniconda3/envs/hmmer/bin/hmmscan
+## Predict_mRNA_lncRNA_swissprot
+Predict_mRNA_lncRNA_swissprot	diamond	/ifswh4/BC_PUB_T1/Pipeline/Software/miniconda3/envs/diamond/bin/diamond
+## Predict_mRNA_lncRNA_forPep
+Predict_mRNA_lncRNA_forPep	txCdsPredict	/ifswh4/BC_PUB_T1/Software/image/txCdsPredict
+Predict_mRNA_lncRNA_forPep	LongOrfs_profile	/ifswh4/BC_PUB_T1/Pipeline/Software/miniconda3/envs/transdecoder/profile
+Predict_mRNA_lncRNA_forPep	LongOrfs	/ifswh4/BC_PUB_T1/Pipeline/Software/miniconda3/envs/transdecoder/bin/TransDecoder.LongOrfs
+Predict_mRNA_lncRNA_forPep	getorf_profile	/ifswh4/BC_PUB_T1/Pipeline/Software/CentOS7/EMBOSS/miniconda3/envs/EMBOSS/profile
+Predict_mRNA_lncRNA_forPep	getorf	/ifswh4/BC_PUB_T1/Pipeline/Software/CentOS7/EMBOSS/miniconda3/envs/EMBOSS/bin/getorf
+## Predict_mRNA_lncRNA_CodeNoncode
+Predict_mRNA_lncRNA_CodeNoncode	gffread	/ifswh4/BC_PUB_T1/Pipeline/Software/miniconda3/envs/cufflinks/bin/gffread
+Predict_mRNA_lncRNA_CodeNoncode	Rscript	/ifswh4/BC_PUB_T1/Pipeline/Software/other/r/miniconda3/envs/r-base.4.3.1/bin/Rscript
+Predict_mRNA_lncRNA_CodeNoncode	R_LIB	/ifswh4/BC_PUB_T1/Pipeline/Software/other/r/R_LIB
+## Annotation_diamond
+## Annotation_merge
+Annotation_merge	R_LIB	/ifswh4/BC_PUB_T1/Pipeline/Software/other/r/R_LIB
+Annotation_merge	Rscript	/ifswh4/BC_PUB_T1/Pipeline/Software/other/r/miniconda3/envs/r-base.4.3.1/bin/Rscript
+## Expression_RSEM
+Expression_RSEM	rsem_profile	/ifswh4/BC_PUB_T1/Pipeline/Software/miniconda3/envs/rsem/profile
+Expression_RSEM	rsem-calculate-expression	/ifswh4/BC_PUB_T1/Pipeline/Software/miniconda3/envs/rsem/bin/rsem-calculate-expression
+Expression_RSEM	R_LIB	/ifswh4/BC_PUB_T1/Pipeline/Software/other/r/R_LIB
+Expression_RSEM	Rscript	/ifswh4/BC_PUB_T1/Pipeline/Software/other/r/miniconda3/envs/r-base.4.3.1/bin/Rscript
+## Expression_circRNA
+Expression_circRNA	bowtie2	/ifswh4/BC_PUB_T1/Pipeline/Software/miniconda3/envs/bowtie2/bin/bowtie2
+Expression_circRNA	python	/ifswh4/BC_PUB_T1/Pipeline/Software/other/rmats/miniconda3/envs/rmats/bin/python
+## Diff_DEGseq
+Diff_DEGseq	Rscript	/ifswh4/BC_PUB_T1/Pipeline/Software/other/r/miniconda3/envs/r-base.4.3.1/bin/Rscript
+Diff_DEGseq	R_LIB	/ifswh4/BC_PUB_T1/Pipeline/Software/other/r/R_LIB
+## Diff_PossionDis
+Diff_PossionDis	R_LIB	/ifswh4/BC_PUB_T1/Pipeline/Software/other/r/R_LIB
+Diff_PossionDis	Rscript	/ifswh4/BC_PUB_T1/Pipeline/Software/other/r/miniconda3/envs/r-base.4.3.1/bin/Rscript
+## Diff_EBseq
+Diff_EBseq	Rscript	/ifswh4/BC_PUB_T1/Pipeline/Software/other/r/miniconda3/envs/r-base.4.3.1/bin/Rscript
+Diff_EBseq	R_LIB	/ifswh4/BC_PUB_T1/Pipeline/Software/other/r/R_LIB
+## Diff_NOIseq
+Diff_NOIseq	Rscript	/ifswh4/BC_PUB_T1/Pipeline/Software/other/r/miniconda3/envs/r-base.4.3.1/bin/Rscript
+Diff_NOIseq	R_LIB	/ifswh4/BC_PUB_T1/Pipeline/Software/other/r/R_LIB
+## Diff_DEseq2
+Diff_DEseq2	Rscript	/ifswh4/BC_PUB_T1/Pipeline/Software/other/r/miniconda3/envs/r-base.4.3.1/bin/Rscript
+Diff_DEseq2	R_LIB	/ifswh4/BC_PUB_T1/Pipeline/Software/other/r/R_LIB
+## Cluster_WGCNA
+Cluster_WGCNA	WGCNA	/ifswh4/BC_PUB_T1/Pipeline/Software/other/WGCNA/miniconda3/envs/WGCNA/bin/Rscript
+Cluster_WGCNA	convert	/usr/bin/convert	
+## Cluster_mfuzz
+Cluster_mfuzz	Rscript	/ifswh4/BC_PUB_T1/Pipeline/Software/other/r/miniconda3/envs/r-base.4.3.1/bin/Rscript
+Cluster_mfuzz	R_LIB	/ifswh4/BC_PUB_T1/Pipeline/Software/other/r/R_LIB
+Cluster_mfuzz	convert	/usr/bin/convert
+## Cluster_pheatmap_forExp
+Cluster_pheatmap_forExp	Rscript	/ifswh4/BC_PUB_T1/Pipeline/Software/other/r/miniconda3/envs/r-base.4.3.1/bin/Rscript
+Cluster_pheatmap_forExp	R_LIB	/ifswh4/BC_PUB_T1/Pipeline/Software/other/r/R_LIB
+Cluster_pheatmap_forExp	convert	/usr/bin/convert
+## Coverage
+Coverage	samtools	/ifswh4/BC_PUB_T1/Pipeline/Software/miniconda3/envs/samtools/bin/samtools
+Coverage	convert	/usr/bin/convert
+Coverage	Rscript	/ifswh4/BC_PUB_T1/Pipeline/Software/other/r/miniconda3/envs/r-base.4.3.1/bin/Rscript
+Coverage	R_LIB	/ifswh4/BC_PUB_T1/Pipeline/Software/other/r/R_LIB
+## Basic_stat
+Basic_stat	Rscript	/ifswh4/BC_PUB_T1/Pipeline/Software/other/r/miniconda3/envs/r-base.4.3.1/bin/Rscript
+Basic_stat	R	/ifswh4/BC_PUB_T1/Pipeline/Software/other/r/miniconda3/envs/r-base.4.3.1/bin/R
+Basic_stat	samtools	/ifswh4/BC_PUB_T1/Pipeline/Software/miniconda3/envs/samtools/bin/samtools
+Basic_stat	R_LIB	/ifswh4/BC_PUB_T1/Pipeline/Software/other/r/R_LIB
+Basic_stat	convert	/usr/bin/convert
+## Rich_phyper
+Rich_phyper	perl	/ifswh4/BC_PUB_T1/Pipeline/Software/other/GD/miniconda3/envs/gd/bin/perl
+#Rich_phyper	glibc214	/ifswh4/BC_PUB_T1/Software/glibc2.14/lib
+Rich_phyper	Rscript	/ifswh4/BC_PUB_T1/Pipeline/Software/other/r/miniconda3/envs/r-base.4.3.1/bin/Rscript
+Rich_phyper	R_LIB	/ifswh4/BC_PUB_T1/Pipeline/Software/other/r/R_LIB
+## Rich_target
+Rich_target	perl	/ifswh4/BC_PUB_T1/Pipeline/Software/other/GD/miniconda3/envs/gd/bin/perl
+#Rich_target	glibc214	/ifswh4/BC_PUB_T1/Software/glibc2.14/lib
+Rich_target	Rscript	/ifswh4/BC_PUB_T1/Pipeline/Software/other/r/miniconda3/envs/r-base.4.3.1/bin/Rscript
+Rich_target	R_LIB	/ifswh4/BC_PUB_T1/Pipeline/Software/other/r/R_LIB
+## Rich_mfuzz
+Rich_mfuzz	perl	/ifswh4/BC_PUB_T1/Pipeline/Software/other/GD/miniconda3/envs/gd/bin/perl
+#Rich_mfuzz	glibc214	/ifswh4/BC_PUB_T1/Software/glibc2.14/lib
+Rich_mfuzz	Rscript	/ifswh4/BC_PUB_T1/Pipeline/Software/other/r/miniconda3/envs/r-base.4.3.1/bin/Rscript
+Rich_mfuzz	R_LIB	/ifswh4/BC_PUB_T1/Pipeline/Software/other/r/R_LIB
+## Rich_wgcna
+Rich_wgcna	perl	/ifswh4/BC_PUB_T1/Pipeline/Software/other/GD/miniconda3/envs/gd/bin/perl
+#Rich_wgcna	glibc214	/ifswh4/BC_PUB_T1/Software/glibc2.14/lib
+Rich_wgcna	Rscript	/ifswh4/BC_PUB_T1/Pipeline/Software/other/r/miniconda3/envs/r-base.4.3.1/bin/Rscript
+Rich_wgcna	R_LIB	/ifswh4/BC_PUB_T1/Pipeline/Software/other/r/R_LIB
+## Link_lncRNA_mRNA_Cis_Tran
+Link_lncRNA_mRNA_Cis_Tran	bedtools	/ifswh4/BC_PUB_T1/Pipeline/Software/miniconda3/envs/bedtools/bin/bedtools
+## Link_lncRNA_mRNA_RNAplex
+Link_lncRNA_mRNA_RNAplex	RNAplex	/ifswh4/BC_PUB_T1/Pipeline/Software/miniconda3/envs/viennarna/bin/RNAplex
+## Link_lncRNA_mRNA_Correlation
+Link_lncRNA_mRNA_Correlation	rowsToCols	/ifswh4/BC_PUB_T1/Software/image/rowsToCols
+Link_lncRNA_mRNA_Correlation	Rscript	/ifswh4/BC_PUB_T1/Pipeline/Software/other/r/miniconda3/envs/r-base.4.3.1/bin/Rscript
+Link_lncRNA_mRNA_Correlation	R_LIB	/ifswh4/BC_PUB_T1/Pipeline/Software/other/r/R_LIB
+## Target
+Target	Rscript	/ifswh4/BC_PUB_T1/Pipeline/Software/other/r/miniconda3/envs/r-base.4.3.1/bin/Rscript
+Target	R_LIB	/ifswh4/BC_PUB_T1/Pipeline/Software/other/r/R_LIB
+## Structure_SNP_INDEL
+Structure_SNP_INDEL	singularity	/share/app/singularity-3.7.0/bin/singularity
+Structure_SNP_INDEL	image_dir	/ifswh4/BC_PUB_T1/Software/image/
+Structure_SNP_INDEL	image_db	/ifswh4/BC_PUB_T2
+Structure_SNP_INDEL	image_annodb	/ifswh4/BC_PUB_T1/Software/image/annodb_perl.sif
+Structure_SNP_INDEL	image_annodb_dbdir	/ifswh4/BC_PUB_T1/Pipeline/DNA/DNA_HUMAN_WGS_WES/DATABASE/AnnoDB/
+Structure_SNP_INDEL	annodb	/ifswh4/BC_PUB_T1/Software/image/annodb/annodb.pl
+
+Structure_SNP_INDEL	gatk	/ifswh4/BC_PUB_T1/Pipeline/Software/other/gatk/miniconda3/envs/gatk/bin/gatk
+Structure_SNP_INDEL	gatk_profile	/ifswh4/BC_PUB_T1/Pipeline/Software/other/gatk/miniconda3/envs/gatk/profile
+Structure_SNP_INDEL	samtools	/ifswh4/BC_PUB_T1/Pipeline/Software/miniconda3/envs/samtools/bin/samtools
+Structure_SNP_INDEL	bedtools	/ifswh4/BC_PUB_T1/Pipeline/Software/miniconda3/envs/bedtools/bin/bedtools
+Structure_SNP_INDEL	R_LIB	/ifswh4/BC_PUB_T1/Pipeline/Software/other/r/R_LIB
+Structure_SNP_INDEL	Rscript	/ifswh4/BC_PUB_T1/Pipeline/Software/other/r/miniconda3/envs/r-base.4.3.1/bin/Rscript
+Structure_SNP_INDEL	bgzip	/ifswh4/BC_PUB_T1/Pipeline/Software/miniconda3/envs/bcftools/bin/bgzip
+Structure_SNP_INDEL	bcftools	/ifswh4/BC_PUB_T1/Pipeline/Software/miniconda3/envs/bcftools/bin/bcftools
+## Structure_AS_rMATS
+Structure_AS_rMATS	python2.7	/ifswh4/BC_PUB_T1/Pipeline/Software/other/rmats/miniconda3/envs/rmats/bin/python
+Structure_AS_rMATS	rmats_profile	/ifswh4/BC_PUB_T1/Pipeline/Software/CentOS7/rmats/miniconda3/envs/rmats/profile
+Structure_AS_rMATS	python	/ifswh4/BC_PUB_T1/Pipeline/Software/CentOS7/rmats/miniconda3/envs/rmats/bin/python
+Structure_AS_rMATS	rmats2sashimiplot_profile	/ifswh4/BC_PUB_T1/Pipeline/Software/other/rmats2sashimiplot/miniconda3/envs/rmats2sashimiplot/profile
+Structure_AS_rMATS	rmats2sashimiplot	/ifswh4/BC_PUB_T1/Pipeline/Software/other/rmats2sashimiplot/miniconda3/envs/rmats2sashimiplot/bin/rmats2sashimiplot
+Structure_AS_rMATS	RNASeq-MATS	/ifswh4/BC_PUB_T1/Pipeline/Software/CentOS7/rmats/miniconda3/envs/rmats/bin/RNASeq-MATS.py
+Structure_AS_rMATS	cp_with_prefix	/ifswh4/BC_PUB_T1/Pipeline/Software/CentOS7/rmats/miniconda3/envs/rmats/rMATS/cp_with_prefix.py
+Structure_AS_rMATS	prepare_stat_inputs	/ifswh4/BC_PUB_T1/Pipeline/Software/CentOS7/rmats/miniconda3/envs/rmats/rMATS/rMATS_P/prepare_stat_inputs.py
+Structure_AS_rMATS	R_LIB	/ifswh4/BC_PUB_T1/Pipeline/Software/other/r/R_LIB
+Structure_AS_rMATS	Rscript	/ifswh4/BC_PUB_T1/Pipeline/Software/other/r/miniconda3/envs/r-base.4.3.1/bin/Rscript
+## Structure_Fusion_ericscript
+Structure_Fusion_ericscript	BuildSeq	/ifswh4/BC_PUB_T1/Pipeline/Software/other/ericscript/miniconda3/envs/ericscript/share/ericscript-0.5.5-5/lib/bash/BuildSeq_change.sh
+Structure_Fusion_ericscript	ericscript_bin	/ifswh4/BC_PUB_T1/Pipeline/Software/other/ericscript/miniconda3/envs/ericscript/bin
+Structure_Fusion_ericscript	ericscript_profile	/ifswh4/BC_PUB_T1/Pipeline/Software/other/ericscript/miniconda3/envs/ericscript/profile
+Structure_Fusion_ericscript	ericscript	/ifswh4/BC_PUB_T1/Pipeline/Software/other/ericscript/miniconda3/envs/ericscript/bin/ericscript.pl
+Structure_Fusion_ericscript	perl	/ifswh4/BC_PUB_T1/Pipeline/Software/other/ericscript/miniconda3/envs/ericscript/bin/perl
+Structure_Fusion_ericscript	python	/ifswh4/BC_PUB_T1/Pipeline/Software/miniconda3/bin/python
+## Structure_Fusion_star_fusion
+Structure_Fusion_star_fusion	star_fusion	/ifswh4/BC_PUB_T1/Pipeline/Software/CentOS7/star-fusion/miniconda3/envs/star-fusion/bin/STAR-Fusion
+Structure_Fusion_star_fusion	star_fusion_profile	/ifswh4/BC_PUB_T1/Pipeline/Software/CentOS7/star-fusion/miniconda3/envs/star-fusion/profile

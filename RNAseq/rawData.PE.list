@@ -1,0 +1,3 @@
+DLD	DLD	/ifswh7/BC_PBG_R/fangyitong/wj_EcoGdpn_hic/0204_NCM_DLP_LOVO_RNAseq/rawdata/DLD_1.fq.gz,/ifswh7/BC_PBG_R/fangyitong/wj_EcoGdpn_hic/0204_NCM_DLP_LOVO_RNAseq/rawdata/DLD_2.fq.gz	150	RNAref	18086228700	PE	1	33	BGISEQ	2
+LOVO	LOVO	/ifswh7/BC_PBG_R/fangyitong/wj_EcoGdpn_hic/0204_NCM_DLP_LOVO_RNAseq/rawdata/LOVO_1.fq.gz,/ifswh7/BC_PBG_R/fangyitong/wj_EcoGdpn_hic/0204_NCM_DLP_LOVO_RNAseq/rawdata/LOVO_2.fq.gz	150	RNAref	17412312600	PE	1	33	BGISEQ	2
+NCM	NCM	/ifswh7/BC_PBG_R/fangyitong/wj_EcoGdpn_hic/0204_NCM_DLP_LOVO_RNAseq/rawdata/NCM_1.fq.gz,/ifswh7/BC_PBG_R/fangyitong/wj_EcoGdpn_hic/0204_NCM_DLP_LOVO_RNAseq/rawdata/NCM_2.fq.gz	150	RNAref	19248346500	PE	1	33	BGISEQ	2
