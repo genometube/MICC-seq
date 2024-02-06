@@ -1,1 +1,0 @@
-perl /ifswh4/BC_PUB_T1/Pipeline/RNA/DrTom_bigRNA/Pipe_for_RNA/Pipe_for_RNA_conda.pl -config Pipe_for_RNA.config.RNAref -data_list rawData.PE.list -database Pipe_for_RNA.database.RNAref -software Pipe_for_RNA.software.conda -outdir outdir
