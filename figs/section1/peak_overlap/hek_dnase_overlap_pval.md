@@ -100,7 +100,7 @@ p1<-ggplot(all_data, aes(x=subgroup, y=feature_val, fill=subgroup)) +
 p1
 ```
 
-![](/research/xieyeming1/proj_2025/MICC_paper/genometube/MICC-seq/figs/section1/peak_overlap/hek_dnase_overlap_pval_files/figure-gfm/unnamed-chunk-1-1.png)<!-- -->
+![](hek_dnase_overlap_pval_files/figure-gfm/unnamed-chunk-1-1.png)<!-- -->
 
 ``` r
 pdf(paste0(plot_title,'.pdf'))
