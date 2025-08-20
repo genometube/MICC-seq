@@ -1,7 +1,7 @@
 RPII_enhancer_micc_violin
 ================
 <yemingxie@gmail.com>
-Wed Aug 20 18:15:46 2025
+Wed Aug 20 18:21:09 2025
 
 ``` r
 knitr::opts_chunk$set(echo = TRUE)
@@ -54,13 +54,13 @@ wilcox_result <- wilcox.test(in_file_2$V4, in_file_1$V4,
 head(all_data)
 ```
 
-    ##        V1        V2        V3        V4              subgroup feature_val
-    ## 5001 chr2 183579990 183580361  1.266667 RPII_h3k4me1_Micc.bdg    1.266667
-    ## 4880 chr2  99772144  99772587  4.092308 RPII_h3k4me1_Micc.bdg    4.092308
-    ## 650  chr1 153650526 153651016  0.000000 RPII_h3k4me1_Micc.bdg    0.000000
-    ## 635  chr1 151300493 151300884 21.555000 RPII_h3k4me1_Micc.bdg   21.555000
-    ## 6099 chr5  14663961  14664277  8.690000 RPII_h3k4me1_Micc.bdg    8.690000
-    ## 7064 chr6 158982185 158982621  2.850000 RPII_h3k4me1_Micc.bdg    2.850000
+    ##         V1        V2        V3        V4              subgroup feature_val
+    ## 7870  chrX 107070365 107070700  8.590909 RPII_h3k4me1_Micc.bdg    8.590909
+    ## 327   chr1  55008443  55008712  3.800000 RPII_h3k4me1_Micc.bdg    3.800000
+    ## 7518  chr8 103877120 103877418 13.550000 RPII_h3k4me1_Micc.bdg   13.550000
+    ## 5494 chr22  29976264  29976551  4.342857 RPII_h3k4me1_Micc.bdg    4.342857
+    ## 4066 chr19  14544823  14545295  5.500000 RPII_h3k4me1_Micc.bdg    5.500000
+    ## 417   chr1  68698825  68699264  4.871429 RPII_h3k4me1_Micc.bdg    4.871429
 
 ``` r
 summ <- all_data %>%
@@ -74,8 +74,8 @@ summ
     ## # A tibble: 2 × 5
     ##   subgroup                    n  mean max_val    sd
     ##   <chr>                   <int> <dbl>   <dbl> <dbl>
-    ## 1 RPII_h3k4me1_Micc.bdg    6000  8.97   1386. 26.8 
-    ## 2 RPII_h3k4me1_noMicc.bdg  6000  2.43    139.  3.71
+    ## 1 RPII_h3k4me1_Micc.bdg    6000  9.37  1774.  35.9 
+    ## 2 RPII_h3k4me1_noMicc.bdg  6000  2.36    51.5  3.00
 
 ``` r
 levels(factor(all_data$subgroup))
@@ -101,10 +101,10 @@ p1<-ggplot(all_data, aes(x=subgroup, y=feature_val, fill=subgroup)) +
   theme(axis.text = element_text(face='bold'),
     axis.title = element_text(face="bold"),plot.title = element_text(face="bold"),
     legend.position="top") + ylim(0,20)
-p1
+print(p1)
 ```
 
-    ## Warning: Removed 423 rows containing non-finite outside the scale range
+    ## Warning: Removed 428 rows containing non-finite outside the scale range
     ## (`stat_signif()`).
 
     ## Warning: Removed 3 rows containing missing values or values outside the scale
@@ -117,7 +117,7 @@ pdf(paste0(plot_title,'.pdf'))
 print(p1)
 ```
 
-    ## Warning: Removed 423 rows containing non-finite outside the scale range (`stat_signif()`).
+    ## Warning: Removed 428 rows containing non-finite outside the scale range (`stat_signif()`).
     ## Removed 3 rows containing missing values or values outside the scale range (`geom_signif()`).
 
 ``` r
