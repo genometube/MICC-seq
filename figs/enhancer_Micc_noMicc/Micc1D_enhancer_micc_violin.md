@@ -1,7 +1,7 @@
-RPII_enhancer_micc_violin
+Micc1D_enhancer_micc_violin
 ================
 <yemingxie@gmail.com>
-Thu Aug 21 11:08:13 2025
+Thu Aug 21 11:05:04 2025
 
 ``` r
 knitr::opts_chunk$set(echo = TRUE)
@@ -32,10 +32,10 @@ args = commandArgs(trailingOnly=TRUE)
 file_path=getwd()
 
 setwd('/research/xieyeming1/proj_2025/MICC_paper/genometube/MICC-seq/figs/enhancer_Micc_noMicc')
-plot_title='RPII_enhancer_micc_violin'
-y_axis='bedgraph_val'
-in_file1='RPII_h3k4me1_Micc.bdg'
-in_file2='RPII_h3k4me1_noMicc.bdg'
+plot_title='Micc1D_enhancer_micc_violin'
+y_axis='log2_bedgraph_val'
+in_file1='Micc1D_h3k4me1_Micc.bdg'
+in_file2='Micc1D_h3k4me1_noMicc.bdg'
 in_file_1 <- read.table(paste0(file_path,'/',in_file1), sep="\t", header=F)
 in_file_1$subgroup<-in_file1
 in_file_2 <- read.table(paste0(file_path,'/',in_file2), sep="\t", header=F)
@@ -43,24 +43,24 @@ in_file_2$subgroup<-in_file2
 
 # combine all data
 in_file_1_<-in_file_1[sample(1:nrow(in_file_1),6000),]
-# random sample rows from RPII_enhancer_micc
+# random sample rows from Micc1D_enhancer_micc
 in_file_2_<-in_file_2[sample(1:nrow(in_file_2),6000),]
 # combine all data
 all_data <- rbind(in_file_1_, in_file_2_)
 # all_data$feature_val <- ifelse(all_data$V4 > 0, log2(all_data$V4), NA)
-all_data$feature_val <- all_data$V4
+all_data$feature_val <- log2(all_data$V4+1)
 wilcox_result <- wilcox.test(in_file_2$V4, in_file_1$V4, 
                            alternative = "two.sided")
 head(all_data)
 ```
 
-    ##         V1       V2       V3        V4              subgroup feature_val
-    ## 5478 chr22 26880587 26880992  3.800000 RPII_h3k4me1_Micc.bdg    3.800000
-    ## 3640 chr17 65713093 65713398  5.915385 RPII_h3k4me1_Micc.bdg    5.915385
-    ## 4803  chr2 66306868 66307381  1.900000 RPII_h3k4me1_Micc.bdg    1.900000
-    ## 2894 chr16 22386623 22386858  8.320000 RPII_h3k4me1_Micc.bdg    8.320000
-    ## 5773  chr3 49157418 49157663 12.363636 RPII_h3k4me1_Micc.bdg   12.363636
-    ## 2796 chr16   777481   777738 13.980000 RPII_h3k4me1_Micc.bdg   13.980000
+    ##         V1        V2        V3       V4                subgroup feature_val
+    ## 7012  chr6 150311118 150311691 172.3333 Micc1D_h3k4me1_Micc.bdg    7.437405
+    ## 822   chr1 200285984 200286297  96.0000 Micc1D_h3k4me1_Micc.bdg    6.599913
+    ## 2896 chr16  22824939  22825255 135.5000 Micc1D_h3k4me1_Micc.bdg    7.092757
+    ## 3488 chr17  42787860  42788095  50.0000 Micc1D_h3k4me1_Micc.bdg    5.672425
+    ## 3846 chr18  46479462  46479694 159.0000 Micc1D_h3k4me1_Micc.bdg    7.321928
+    ## 719   chr1 157108902 157109151  77.0000 Micc1D_h3k4me1_Micc.bdg    6.285402
 
 ``` r
 summ <- all_data %>%
@@ -72,25 +72,25 @@ summ
 ```
 
     ## # A tibble: 2 × 5
-    ##   subgroup                    n  mean max_val    sd
-    ##   <chr>                   <int> <dbl>   <dbl> <dbl>
-    ## 1 RPII_h3k4me1_Micc.bdg    6000  8.84    671. 21.9 
-    ## 2 RPII_h3k4me1_noMicc.bdg  6000  2.4     139.  3.67
+    ##   subgroup                      n  mean max_val    sd
+    ##   <chr>                     <int> <dbl>   <dbl> <dbl>
+    ## 1 Micc1D_h3k4me1_Micc.bdg    6000  6.82    15.6 0.930
+    ## 2 Micc1D_h3k4me1_noMicc.bdg  6000  4.78    11.7 0.753
 
 ``` r
 levels(factor(all_data$subgroup))
 ```
 
-    ## [1] "RPII_h3k4me1_Micc.bdg"   "RPII_h3k4me1_noMicc.bdg"
+    ## [1] "Micc1D_h3k4me1_Micc.bdg"   "Micc1D_h3k4me1_noMicc.bdg"
 
 ``` r
 p1<-ggplot(all_data, aes(x=subgroup, y=feature_val, fill=subgroup)) +
   geom_violin(trim=FALSE, bw=0.3, na.rm = TRUE) +
   geom_boxplot(width=0.1, outlier.shape = NA, na.rm = TRUE) +
   geom_text(aes(label = paste0('N=',n), y = max(mean, na.rm = TRUE)), 
-            data = summ, size=4, vjust = -2, hjust = 1) +
+            data = summ, size=4, vjust = -2, hjust = 2) +
   geom_text(aes(label = paste0('mean=',mean), y = max(mean, na.rm = TRUE)), 
-            data = summ, size=4, vjust = 4, hjust = 1) +
+            data = summ, size=4, vjust = 4, hjust = 2) +
   scale_fill_manual(values=c("lightblue","indianred")) +
   theme_classic() +  geom_signif(comparisons = list(levels(factor(all_data$subgroup))), 
               test = "wilcox.test", map_signif_level = TRUE,
@@ -100,24 +100,24 @@ p1<-ggplot(all_data, aes(x=subgroup, y=feature_val, fill=subgroup)) +
     y = y_axis) +
   theme(axis.text = element_text(face='bold'),
     axis.title = element_text(face="bold"),plot.title = element_text(face="bold"),
-    legend.position="top") + ylim(0,20)
+    legend.position="top") + ylim(0,10)
 print(p1)
 ```
 
-    ## Warning: Removed 425 rows containing non-finite outside the scale range
+    ## Warning: Removed 30 rows containing non-finite outside the scale range
     ## (`stat_signif()`).
 
     ## Warning: Removed 3 rows containing missing values or values outside the scale
     ## range (`geom_signif()`).
 
-![](RPII_enhancer_micc_violin_files/figure-gfm/unnamed-chunk-1-1.png)<!-- -->
+![](Micc1D_enhancer_micc_violin_files/figure-gfm/unnamed-chunk-1-1.png)<!-- -->
 
 ``` r
 pdf(paste0(plot_title,'.pdf'))
 print(p1)
 ```
 
-    ## Warning: Removed 425 rows containing non-finite outside the scale range (`stat_signif()`).
+    ## Warning: Removed 30 rows containing non-finite outside the scale range (`stat_signif()`).
     ## Removed 3 rows containing missing values or values outside the scale range (`geom_signif()`).
 
 ``` r
