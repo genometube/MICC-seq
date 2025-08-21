@@ -1,7 +1,5 @@
-RPII_enhancer_micc_violin
-================
 <yemingxie@gmail.com>
-Thu Aug 21 11:08:13 2025
+Thu Aug 21 11:30:09 2025
 
 ``` r
 knitr::opts_chunk$set(echo = TRUE)
@@ -54,13 +52,13 @@ wilcox_result <- wilcox.test(in_file_2$V4, in_file_1$V4,
 head(all_data)
 ```
 
-    ##         V1       V2       V3        V4              subgroup feature_val
-    ## 5478 chr22 26880587 26880992  3.800000 RPII_h3k4me1_Micc.bdg    3.800000
-    ## 3640 chr17 65713093 65713398  5.915385 RPII_h3k4me1_Micc.bdg    5.915385
-    ## 4803  chr2 66306868 66307381  1.900000 RPII_h3k4me1_Micc.bdg    1.900000
-    ## 2894 chr16 22386623 22386858  8.320000 RPII_h3k4me1_Micc.bdg    8.320000
-    ## 5773  chr3 49157418 49157663 12.363636 RPII_h3k4me1_Micc.bdg   12.363636
-    ## 2796 chr16   777481   777738 13.980000 RPII_h3k4me1_Micc.bdg   13.980000
+    ##         V1        V2        V3        V4              subgroup feature_val
+    ## 1182 chr10   5933137   5933364  0.000000 RPII_h3k4me1_Micc.bdg    0.000000
+    ## 3717 chr17  77750180  77750802  8.826667 RPII_h3k4me1_Micc.bdg    8.826667
+    ## 1622 chr11  64001446  64001684  6.820000 RPII_h3k4me1_Micc.bdg    6.820000
+    ## 6415  chr5 180046470 180046723  7.144444 RPII_h3k4me1_Micc.bdg    7.144444
+    ## 3698 chr17  74666785  74667559 19.304444 RPII_h3k4me1_Micc.bdg   19.304444
+    ## 1241 chr10  27389657  27390086  8.808889 RPII_h3k4me1_Micc.bdg    8.808889
 
 ``` r
 summ <- all_data %>%
@@ -74,8 +72,8 @@ summ
     ## # A tibble: 2 × 5
     ##   subgroup                    n  mean max_val    sd
     ##   <chr>                   <int> <dbl>   <dbl> <dbl>
-    ## 1 RPII_h3k4me1_Micc.bdg    6000  8.84    671. 21.9 
-    ## 2 RPII_h3k4me1_noMicc.bdg  6000  2.4     139.  3.67
+    ## 1 RPII_h3k4me1_Micc.bdg    6000  9.31  1774.  35.4 
+    ## 2 RPII_h3k4me1_noMicc.bdg  6000  2.34    86.4  3.14
 
 ``` r
 levels(factor(all_data$subgroup))
@@ -104,7 +102,7 @@ p1<-ggplot(all_data, aes(x=subgroup, y=feature_val, fill=subgroup)) +
 print(p1)
 ```
 
-    ## Warning: Removed 425 rows containing non-finite outside the scale range
+    ## Warning: Removed 418 rows containing non-finite outside the scale range
     ## (`stat_signif()`).
 
     ## Warning: Removed 3 rows containing missing values or values outside the scale
@@ -117,7 +115,22 @@ pdf(paste0(plot_title,'.pdf'))
 print(p1)
 ```
 
-    ## Warning: Removed 425 rows containing non-finite outside the scale range (`stat_signif()`).
+    ## Warning: Removed 418 rows containing non-finite outside the scale range (`stat_signif()`).
+    ## Removed 3 rows containing missing values or values outside the scale range (`geom_signif()`).
+
+``` r
+dev.off()
+```
+
+    ## png 
+    ##   2
+
+``` r
+png(paste0(plot_title,'.png'))
+print(p1)
+```
+
+    ## Warning: Removed 418 rows containing non-finite outside the scale range (`stat_signif()`).
     ## Removed 3 rows containing missing values or values outside the scale range (`geom_signif()`).
 
 ``` r

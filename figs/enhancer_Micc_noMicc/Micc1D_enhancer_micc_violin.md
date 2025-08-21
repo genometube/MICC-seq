@@ -1,7 +1,7 @@
 Micc1D_enhancer_micc_violin
 ================
 <yemingxie@gmail.com>
-Thu Aug 21 11:05:04 2025
+Thu Aug 21 11:28:13 2025
 
 ``` r
 knitr::opts_chunk$set(echo = TRUE)
@@ -28,9 +28,7 @@ library(tidyr)
 library(ggsignif)
 npg_colors <- pal_npg()(10)
 
-args = commandArgs(trailingOnly=TRUE)
 file_path=getwd()
-
 setwd('/research/xieyeming1/proj_2025/MICC_paper/genometube/MICC-seq/figs/enhancer_Micc_noMicc')
 plot_title='Micc1D_enhancer_micc_violin'
 y_axis='log2_bedgraph_val'
@@ -54,13 +52,13 @@ wilcox_result <- wilcox.test(in_file_2$V4, in_file_1$V4,
 head(all_data)
 ```
 
-    ##         V1        V2        V3       V4                subgroup feature_val
-    ## 7012  chr6 150311118 150311691 172.3333 Micc1D_h3k4me1_Micc.bdg    7.437405
-    ## 822   chr1 200285984 200286297  96.0000 Micc1D_h3k4me1_Micc.bdg    6.599913
-    ## 2896 chr16  22824939  22825255 135.5000 Micc1D_h3k4me1_Micc.bdg    7.092757
-    ## 3488 chr17  42787860  42788095  50.0000 Micc1D_h3k4me1_Micc.bdg    5.672425
-    ## 3846 chr18  46479462  46479694 159.0000 Micc1D_h3k4me1_Micc.bdg    7.321928
-    ## 719   chr1 157108902 157109151  77.0000 Micc1D_h3k4me1_Micc.bdg    6.285402
+    ##         V1        V2        V3        V4                subgroup feature_val
+    ## 1109  chr1 235795932 235796377 146.60000 Micc1D_h3k4me1_Micc.bdg    7.205549
+    ## 4963  chr2 161850379 161851019 128.12500 Micc1D_h3k4me1_Micc.bdg    7.012625
+    ## 2393 chr14  73603903  73604427  67.33333 Micc1D_h3k4me1_Micc.bdg    6.094518
+    ## 5383 chr21  43188281  43188541 146.25000 Micc1D_h3k4me1_Micc.bdg    7.202124
+    ## 156   chr1  28413730  28413956  68.33333 Micc1D_h3k4me1_Micc.bdg    6.115477
+    ## 5701  chr3  12525167  12525603 347.66667 Micc1D_h3k4me1_Micc.bdg    8.445705
 
 ``` r
 summ <- all_data %>%
@@ -74,8 +72,8 @@ summ
     ## # A tibble: 2 × 5
     ##   subgroup                      n  mean max_val    sd
     ##   <chr>                     <int> <dbl>   <dbl> <dbl>
-    ## 1 Micc1D_h3k4me1_Micc.bdg    6000  6.82    15.6 0.930
-    ## 2 Micc1D_h3k4me1_noMicc.bdg  6000  4.78    11.7 0.753
+    ## 1 Micc1D_h3k4me1_Micc.bdg    6000  6.83    15.2 0.951
+    ## 2 Micc1D_h3k4me1_noMicc.bdg  6000  4.77    10.0 0.738
 
 ``` r
 levels(factor(all_data$subgroup))
@@ -104,7 +102,7 @@ p1<-ggplot(all_data, aes(x=subgroup, y=feature_val, fill=subgroup)) +
 print(p1)
 ```
 
-    ## Warning: Removed 30 rows containing non-finite outside the scale range
+    ## Warning: Removed 40 rows containing non-finite outside the scale range
     ## (`stat_signif()`).
 
     ## Warning: Removed 3 rows containing missing values or values outside the scale
@@ -117,7 +115,22 @@ pdf(paste0(plot_title,'.pdf'))
 print(p1)
 ```
 
-    ## Warning: Removed 30 rows containing non-finite outside the scale range (`stat_signif()`).
+    ## Warning: Removed 40 rows containing non-finite outside the scale range (`stat_signif()`).
+    ## Removed 3 rows containing missing values or values outside the scale range (`geom_signif()`).
+
+``` r
+dev.off()
+```
+
+    ## png 
+    ##   2
+
+``` r
+png(paste0(plot_title,'.png'))
+print(p1)
+```
+
+    ## Warning: Removed 40 rows containing non-finite outside the scale range (`stat_signif()`).
     ## Removed 3 rows containing missing values or values outside the scale range (`geom_signif()`).
 
 ``` r
