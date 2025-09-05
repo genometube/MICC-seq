@@ -29,8 +29,8 @@ id_map
 align_dir='/research/xieyeming1/proj_2025/wj_n3kJQ1_250829/align'
 
 bdg_files<-list.files(align_dir,'*.SE.bdg$',recursive = T,full.names = T)
-#bdg_files
-#bdg<-fread(bdg_files[1])
+bdg_files
+bdg<-fread(bdg_files[1])
 head(bdg)
 dim(bdg)
 peak_list2<-map(bdg_files,function(x){
@@ -38,7 +38,6 @@ peak_list2<-map(bdg_files,function(x){
     colnames(peak)<-c('chr','start','end','maxBinCount_n3k')
     peak$barcode<-gsub(".*/(\\d+)/\\d+_.*", "\\1", x)
     peak$treatment<-id_map$treatment[match(peak$barcode,id_map$barcode)]
-    # add peak number 
     peak$peak_id<-paste0(peak$chr,':',peak$start,'-',peak$end)
     return_table<-peak[,c('peak_id','treatment','maxBinCount_n3k')]
     return(return_table)
@@ -56,7 +55,6 @@ ggplot(peak_compare_dt,aes(x=treatment,y=log10(maxBinCount_n3k+1),fill=treatment
   theme_bw()+ 
   scale_fill_npg()+
   theme(axis.text.x = element_text(angle = 45, hjust = 1,size=12)) # increase y x axis text lab size
-
 
 # convert peak_compare_dt to wide format
 wide_data <- dcast(peak_compare_dt, peak_id ~ treatment, value.var = "maxBinCount_n3k")
@@ -81,11 +79,67 @@ p<-ggplot(long_data,aes(x=log2(maxBinCount_n3k),fill=treatment))+
     labs(x='log2(treatment/ctrl)',y='Density')+# add panel title
     ggtitle(paste0('wj_n3kJQ1_250829\nregion: hek, super_enhancer, N=',dim(bdg)[1],'\nsignal: n3k maxBinCount, bin_size=50bp') )+
     facet_wrap(~treatment)
-png('wj_n3kJQ1_250829_n3k_maxBinCount_density.png',width = 8,height = 4,units = 'in',res = 1200)
+png('wj_n3kJQ1_250829_n3k_maxBinCount_super_enhancer_density.png',width = 8,height = 4,units = 'in',res = 1200)
 print(p)
 dev.off()
-getwd()
-##############################
+
+############################## promoter ##############################
+bdg_files<-list.files(align_dir,'*.promoter.bdg$',recursive = T,full.names = T)
+bdg_files
+bdg<-fread(bdg_files[1])
+head(bdg)
+dim(bdg)
+peak_list2<-map(bdg_files,function(x){
+    peak<-fread(x)
+    colnames(peak)<-c('chr','start','end','maxBinCount_n3k')
+    peak$barcode<-gsub(".*/(\\d+)/\\d+_.*", "\\1", x)
+    peak$treatment<-id_map$treatment[match(peak$barcode,id_map$barcode)]
+    peak$peak_id<-paste0(peak$chr,':',peak$start,'-',peak$end)
+    return_table<-peak[,c('peak_id','treatment','maxBinCount_n3k')]
+    return(return_table)
+})
+
+peak_compare<-do.call(rbind,peak_list2)
+head(peak_compare)
+table(peak_compare$treatment)
+
+peak_compare_dt<-as.data.table(peak_compare)
+peak_compare_dt$maxBinCount_n3k<-as.numeric(peak_compare_dt$maxBinCount_n3k)
+ggplot(peak_compare_dt,aes(x=treatment,y=log10(maxBinCount_n3k+1),fill=treatment))+
+  geom_violin()+
+  geom_boxplot(width=0.1)+
+  theme_bw()+ 
+  scale_fill_npg()+
+  theme(axis.text.x = element_text(angle = 45, hjust = 1,size=12)) # increase y x axis text lab size
+
+# convert peak_compare_dt to wide format
+wide_data <- dcast(peak_compare_dt, peak_id ~ treatment, value.var = "maxBinCount_n3k")
+head(wide_data)
+# col2 to col7 subtracted by col8
+wide_data<-as.data.frame(wide_data)
+wide_data[,2:8]<-(wide_data[,2:8]+0.1)/(wide_data[,8]+0.1)
+wide_data<-wide_data[,-8]
+wide_data<-as.data.table(wide_data)
+# convert wide_data to long format
+long_data<-melt(wide_data,id.vars = 'peak_id',variable.name = 'treatment',value.name = 'maxBinCount_n3k')
+head(long_data)
+
+# use long_data to plot a density plot panel, each graph is a treatment, for each graph, x is log2(maxBinCount_n3k)
+p<-ggplot(long_data,aes(x=log2(maxBinCount_n3k),fill=treatment))+
+    geom_density(alpha=0.3)+
+    theme_bw()+ 
+    scale_fill_npg()+
+    theme(axis.text.x = element_text(angle = 45, hjust = 1,size=12))+ # increase y x axis text lab size+
+    theme_classic()+# add abline of x = 0
+    geom_vline(xintercept = 0, linetype = "dashed", color = "red")+
+    labs(x='log2(treatment/ctrl)',y='Density')+# add panel title
+    ggtitle(paste0('wj_n3kJQ1_250829\nregion: hek, promoter, N=',dim(bdg)[1],'\nsignal: n3k maxBinCount, bin_size=50bp') )+
+    facet_wrap(~treatment)
+png('wj_n3kJQ1_250829_n3k_maxBinCount_promoter_density.png',width = 8,height = 4,units = 'in',res = 1200)
+print(p)
+dev.off()
+
+############################## end 250905 ##############################
 
 ggplot(long_data,aes(x=treatment,y=log2(maxBinCount_n3k),fill=treatment))+
   geom_violin()+
