@@ -106,10 +106,10 @@ def generate_markdown_with_deepseek():
     response.raise_for_status()
     
     # Save the generated markdown
-    with open(args.output, "w") as f:
+    with open(args.output+'.md', "w") as f:
         f.write(response.json()["choices"][0]["message"]["content"])
     
-    print("Markdown documentation generated: project_documentation.md")
-
+    print(f"Markdown documentation generated: {args.output}")
+    
 if __name__ == "__main__":
     generate_markdown_with_deepseek()
