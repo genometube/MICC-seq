@@ -96,7 +96,7 @@ def generate_markdown_with_deepseek():
             },
             {
                 "role": "user",
-                "content": f"Please format this content as a bioinformatics markdown in Chinese. Summarise analysis method in the last section as a bullet list:\n\n{full_content}"
+                "content": f"Please format this content as a bioinformatics markdown in Chinese. Fig and caption should be separated by an empty line. Summarise analysis method in the last section as a bullet list:\n\n{full_content}"
             }
         ],
         "temperature": 0.7
