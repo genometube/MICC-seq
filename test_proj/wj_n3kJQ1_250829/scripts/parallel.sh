@@ -6,5 +6,5 @@ job_num=10
 
 echo ${sample_id[@]}|sed 's/\ /\n/g'|parallel -j ${job_num} "sh align_single.sh {}"
 
-# echo -e "sample_id\traw_reads\tclean_reads\taligned_reads\tdedup_reads\tpeak_num"|tr [:blank:] \\t > qc_metrics_sum.txt
-# cat */qc_metrics.txt >> qc_metrics_sum.txt
+echo -e "sample_id\tsample_lab\traw_reads\tclean_reads\taligned_reads\tdup_rate\tdedup_reads\tpeak_num"|tr [:blank:] \\t > qc_metrics_sum.txt
+cat */qc_metrics.txt >> qc_metrics_sum.txt

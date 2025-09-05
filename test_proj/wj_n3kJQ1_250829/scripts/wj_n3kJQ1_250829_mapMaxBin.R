@@ -18,7 +18,7 @@ library(httpgd)
 library(purrr)
 npg_colors <- pal_npg()(10)
 hgd()
-setwd('/research/xieyeming1/proj_2025/MICC_paper/genometube/MICC-seq/archive/wj_n3kJQ1_250829')
+setwd('/research/xieyeming1/proj_2025/MICC_paper/genometube/MICC-seq/test_proj/wj_n3kJQ1_250829/scripts')
 options(bedtools.path = "/research/xieyeming1/software/Miniconda/envs/fyt_py311/bin/")
 
 # Create barcode treatment mapping table
@@ -49,12 +49,6 @@ table(peak_compare$treatment)
 
 peak_compare_dt<-as.data.table(peak_compare)
 peak_compare_dt$maxBinCount_n3k<-as.numeric(peak_compare_dt$maxBinCount_n3k)
-ggplot(peak_compare_dt,aes(x=treatment,y=log10(maxBinCount_n3k+1),fill=treatment))+
-  geom_violin()+
-  geom_boxplot(width=0.1)+
-  theme_bw()+ 
-  scale_fill_npg()+
-  theme(axis.text.x = element_text(angle = 45, hjust = 1,size=12)) # increase y x axis text lab size
 
 # convert peak_compare_dt to wide format
 wide_data <- dcast(peak_compare_dt, peak_id ~ treatment, value.var = "maxBinCount_n3k")
@@ -78,8 +72,9 @@ p<-ggplot(long_data,aes(x=log2(maxBinCount_n3k),fill=treatment))+
     geom_vline(xintercept = 0, linetype = "dashed", color = "red")+
     labs(x='log2(treatment/ctrl)',y='Density')+# add panel title
     ggtitle(paste0('wj_n3kJQ1_250829\nregion: hek, super_enhancer, N=',dim(bdg)[1],'\nsignal: n3k maxBinCount, bin_size=50bp') )+
-    facet_wrap(~treatment)
-png('wj_n3kJQ1_250829_n3k_maxBinCount_super_enhancer_density.png',width = 8,height = 4,units = 'in',res = 1200)
+    facet_wrap(~treatment)+
+    theme(strip.text = element_text(size = 14))
+png('wj_n3kJQ1_250829_n3k_maxBinCount_super_enhancer_density.png',width = 8,height = 4,units = 'in',res = 100)
 print(p)
 dev.off()
 
@@ -105,12 +100,6 @@ table(peak_compare$treatment)
 
 peak_compare_dt<-as.data.table(peak_compare)
 peak_compare_dt$maxBinCount_n3k<-as.numeric(peak_compare_dt$maxBinCount_n3k)
-ggplot(peak_compare_dt,aes(x=treatment,y=log10(maxBinCount_n3k+1),fill=treatment))+
-  geom_violin()+
-  geom_boxplot(width=0.1)+
-  theme_bw()+ 
-  scale_fill_npg()+
-  theme(axis.text.x = element_text(angle = 45, hjust = 1,size=12)) # increase y x axis text lab size
 
 # convert peak_compare_dt to wide format
 wide_data <- dcast(peak_compare_dt, peak_id ~ treatment, value.var = "maxBinCount_n3k")
@@ -134,8 +123,9 @@ p<-ggplot(long_data,aes(x=log2(maxBinCount_n3k),fill=treatment))+
     geom_vline(xintercept = 0, linetype = "dashed", color = "red")+
     labs(x='log2(treatment/ctrl)',y='Density')+# add panel title
     ggtitle(paste0('wj_n3kJQ1_250829\nregion: hek, promoter, N=',dim(bdg)[1],'\nsignal: n3k maxBinCount, bin_size=50bp') )+
-    facet_wrap(~treatment)
-png('wj_n3kJQ1_250829_n3k_maxBinCount_promoter_density.png',width = 8,height = 4,units = 'in',res = 1200)
+    facet_wrap(~treatment) +
+    theme(strip.text = element_text(size = 14))
+png('wj_n3kJQ1_250829_n3k_maxBinCount_promoter_density.png',width = 8,height = 4,units = 'in',res = 100)# make image wider
 print(p)
 dev.off()
 
