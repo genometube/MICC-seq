@@ -89,10 +89,10 @@ plot_grid(
 )
 test2
 
-png('../files/hek_3t3_overlap_gs.png',width = 8,height = 10,units = 'in',res = 100)
+png('../files/hek_3t3_overlap_gs.png',width = 15,height = 20,units = 'in',res = 300)
 grid.newpage()
 
-pushViewport(viewport(layout = grid.layout(3, 2, heights = unit(c(3, 3, 4), 'in'))))
+pushViewport(viewport(layout = grid.layout(3, 2, heights = unit(c(5, 4, 6), 'in'))))
 
 pushViewport(viewport(layout.pos.row = 1, layout.pos.col = 1))
 print(p_euler_upset_hek$euler, newpage = FALSE)
