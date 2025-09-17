@@ -1,6 +1,7 @@
 library(eulerr)
 library(ggsci)
 library(UpSetR)
+library(ComplexHeatmap)
 
 plot_overlaps <- function(multi_overlap, set_names = NULL) {
     multi_overlap_mat<-multi_overlap[,6:length(colnames(multi_overlap))]
@@ -17,14 +18,14 @@ plot_overlaps <- function(multi_overlap, set_names = NULL) {
     names(set_counts) <- names(counts)
     fit2 <- euler(set_counts)
     euler_plot <- plot(fit2, quantities = TRUE, fills = npg_colors[c(1,9,2)])
-    
     # Create UpSet plot
-    upset_plot <- upset(
-        data = as.data.frame(multi_overlap_mat),
-        sets = set_names,
-        order.by = "freq",
-        mainbar.y.label = "Intersection Size",
-        sets.x.label = "Set Size"
+    m=make_comb_mat(multi_overlap_mat)
+    upset_plot <- UpSet(m, comb_order = order(comb_size(m))
+        # data=as.data.frame(multi_overlap_mat),
+        # sets = set_names,
+        # order.by = "freq",
+        # mainbar.y.label = "Intersection Size",
+        # sets.x.label = "Set Size"
     )
     
     # Return both plots in a list
