@@ -17,10 +17,10 @@ plot_overlaps <- function(multi_overlap, set_names = NULL) {
     set_counts <- as.numeric(counts)
     names(set_counts) <- names(counts)
     fit2 <- euler(set_counts)
-    euler_plot <- plot(fit2, quantities = TRUE, fills = npg_colors[c(1,9,2)])
+    euler_plot <- plot(fit2, quantities = TRUE, fills = npg_colors[c(1:length(set_names))])
     # Create UpSet plot
     m=make_comb_mat(multi_overlap_mat)
-    upset_plot <- UpSet(m, comb_order = order(comb_size(m))
+    upset_plot <- UpSet(m, comb_order = order(comb_size(m),decreasing = TRUE),
         # data=as.data.frame(multi_overlap_mat),
         # sets = set_names,
         # order.by = "freq",
@@ -34,6 +34,7 @@ plot_overlaps <- function(multi_overlap, set_names = NULL) {
         upset = upset_plot
     ))
 }
+?order
 
 # Example usage:
 # multi_overlap<-bedtoolsr::bt.multiinter(list(paused_tss_bed,noPaused_tss_bed,MICC_1d),cluster=TRUE)
