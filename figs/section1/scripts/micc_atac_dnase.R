@@ -89,7 +89,7 @@ plot_grid(
 )
 test2
 
-png('../files/hek_3t3_overlap_gs.png',width = 10,height = 15,units = 'in',res = 300)
+png('../files/hek_3t3_overlap_gs.png',width = 10,height = 15,units = 'in',res = 100)
 grid.newpage()
 
 pushViewport(viewport(layout = grid.layout(3, 2, heights = unit(c(4, 3, 5), 'in'))))
