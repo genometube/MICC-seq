@@ -22,21 +22,33 @@ options(bedtools.path = "/research/xieyeming1/software/Miniconda/envs/fyt_py311/
 
 MICC_1d<-fread('../files/hekMiccEcoG_3lanes.narrowpeak',sep='\t',header = F)
 divergent<-fread('../files/divergent_peaks_w_header.bed',sep='\t',header = T)
-divergent$p_value_vs_Local<- as.float(divergent$p_value_vs_Local)
+colnames(divergent)[9]<-'p_value_vs_Local'
+
 divergent$p_value_vs_Local<- -log10(divergent$p_value_vs_Local)
+summary(divergent$p_value_vs_Local)
+quantile_95 <-quantile(divergent$p_value_vs_Local, probs = 0.95)
+
+# adjust all val > quantile_95 to quantile_95
+divergent$p_value_vs_Local[divergent$p_value_vs_Local > quantile_95] <- quantile_95
+divergent$focus_ratio<-divergent$focus_ratio+1
+# plot density of divergent$p_value_vs_Local
+ggplot(divergent, aes(x = focus_ratio)) +
+  geom_density(fill = "indianred", alpha = 0.5) +
+  theme_bw() +
+  labs(title = "Density Plot of p_value_vs_Local", x = "p_value_vs_Local")
 
 head(divergent)
 head(MICC_1d)
 divergent_MiccOverlap<-bedtoolsr::bt.intersect(a=divergent,b=MICC_1d,wa=TRUE,u=TRUE,sorted=TRUE)
 divergent_NoMiccOverlap<-bedtoolsr::bt.intersect(a=divergent,b=MICC_1d,wa=TRUE,sorted=TRUE,v=TRUE)
-
+summary(divergent$focus_ratio)
 head(divergent_MiccOverlap)
 dim(divergent_MiccOverlap)
 dim(divergent_NoMiccOverlap)
 
 source("../../../scripts/R_func/violin_compare.R")
 feature_cols<-colnames(divergent)
-cols_vec<-c(5:10)
+cols_vec<-c(5,7,8,9)
 feature_col<-feature_cols[cols_vec]
 plot_list <- list()
 
@@ -49,18 +61,18 @@ for (i in seq_along(cols_vec)) {
         data2_lab = 'divergent_NoMiccOverlap',
         overlap_data1 = divergent_MiccOverlap,
         overlap_data2 = divergent_NoMiccOverlap,
-        plot_title = paste0("divergent_Micc1D_overlap_", col_name),
+        plot_title = paste0("divergent_vs_Micc1D_", col_name),
         y_axis = paste0("log2_", col_name),
         feature_col = col_idx,
-        y_limits_fold = c(0.5, 2),
+        y_limits_fold = c(0.5, 1.1),
         transform_type='log2',
-        args_bw = 0.3,
+        args_bw = 0.1,
         fill_colors = c("indianred", "lightblue")
     )
     plot_list[[i]] <- p
 }
 
-panel_plot <- wrap_plots(plot_list, ncol = 4, guides = "collect") & 
+panel_plot <- wrap_plots(plot_list, ncol = 2, guides = "collect") & 
     theme(legend.position = "bottom")
 print(panel_plot)
 
