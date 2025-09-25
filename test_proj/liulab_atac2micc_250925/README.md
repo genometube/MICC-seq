@@ -25,8 +25,8 @@ The .parquet files contain chromatin interaction data converted from Juicer's me
 
 <br>
 Quick check of .parquet file:<br>
-To generate .mtx file from .parquet file, run: '''python scripts/micc_mtx.py''' <br>
-To generate ROI heatmap from .mtx file, run: '''python scripts/mtx_heatmap.py''' <br>
+To generate .mtx file from .parquet file, run: *python scripts/micc_mtx.py* <br>
+To generate ROI heatmap from .mtx file, run: *python scripts/mtx_heatmap.py* <br>
 
 <img src="files/MICC_HEKwt_chr7_10000_14800_15000.png" alt="ROI heatmap" width="300">
 
