@@ -1,3 +1,5 @@
 *.parquet filter=lfs diff=lfs merge=lfs -text
 figs/part6_PE/files/micc/*.parquet filter=lfs diff=lfs merge=lfs -text
 test_proj/liulab_atac2micc_250925/files/*parquet filter=lfs diff=lfs merge=lfs -text
+test_proj/liulab_atac2micc_250925/files/MICC_HEKwt_hg19_10000_part1.parquet filter=lfs diff=lfs merge=lfs -text
+test_proj/liulab_atac2micc_250925/files/MICC_HEKwt_hg19_10000_part2.parquet filter=lfs diff=lfs merge=lfs -text
