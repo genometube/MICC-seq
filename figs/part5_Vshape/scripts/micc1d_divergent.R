@@ -22,6 +22,7 @@ options(bedtools.path = "/research/xieyeming1/software/Miniconda/envs/fyt_py311/
 
 MICC_1d<-fread('../files/hekMiccEcoG_3lanes.narrowpeak',sep='\t',header = F)
 divergent<-fread('../files/divergent_peaks_w_header.bed',sep='\t',header = T)
+<<<<<<< HEAD
 # colnames(divergent)[9]<-'p_value_vs_Local'
 head(divergent)
 # divergent$p_value_vs_Local<- -log10(divergent$p_value_vs_Local)
@@ -30,6 +31,16 @@ head(divergent)
 
 # adjust all val > quantile_95 to quantile_95
 # divergent$p_value_vs_Local[divergent$p_value_vs_Local > quantile_95] <- quantile_95
+=======
+colnames(divergent)[9]<-'p_value_vs_Local'
+
+divergent$p_value_vs_Local<- -log10(divergent$p_value_vs_Local)
+summary(divergent$p_value_vs_Local)
+quantile_95 <-quantile(divergent$p_value_vs_Local, probs = 0.95)
+
+# adjust all val > quantile_95 to quantile_95
+divergent$p_value_vs_Local[divergent$p_value_vs_Local > quantile_95] <- quantile_95
+>>>>>>> ccbc3adffb4561a004fd608049033dd22442bd07
 divergent$focus_ratio<-divergent$focus_ratio+1
 # plot density of divergent$p_value_vs_Local
 ggplot(divergent, aes(x = focus_ratio)) +
@@ -48,7 +59,11 @@ dim(divergent_NoMiccOverlap)
 
 source("../../../scripts/R_func/violin_compare.R")
 feature_cols<-colnames(divergent)
+<<<<<<< HEAD
 cols_vec<-c(5,7,8)
+=======
+cols_vec<-c(5,7,8,9)
+>>>>>>> ccbc3adffb4561a004fd608049033dd22442bd07
 feature_col<-feature_cols[cols_vec]
 plot_list <- list()
 
