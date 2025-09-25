@@ -8,7 +8,8 @@
 [NIH3T3_atac.bw](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM2796909)
 
 #### HEK293/NIH3T3 MICC-seq
-[HEK293_micc.parquet](files/MICC_HEKwt_hg19_10000.parquet) <br>
+[HEK293_micc.part1.parquet](files/MICC_HEKwt_hg19_10000_part1.parquet) <br>
+[HEK293_micc.part2.parquet](files/MICC_HEKwt_hg19_10000_part2.parquet) <br>
 [NIH3T3_micc.parquet](files/MICC_NIH3T3_mm10_10000.parquet)
 
 ---
