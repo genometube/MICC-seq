@@ -16,7 +16,7 @@ def set_working_directory(path):
         return False
 
 # 表格转MTX函数
-def table_to_mtx(input_file, output_file=None, target_chr=None):
+def table_to_mtx(df, output_file=None, target_chr=None):
     """
     将表格转换为方形MTX格式
     参数:
@@ -31,15 +31,15 @@ def table_to_mtx(input_file, output_file=None, target_chr=None):
     """
     try:
         # 读取表格数据
-        print(f"正在读取表格文件: {input_file}")
-        if input_file.endswith('.parquet'):
-            df = pd.read_parquet(input_file)
-        elif input_file.endswith('.csv'):
-            df = pd.read_csv(input_file)
-        elif input_file.endswith('.tsv'):
-            df = pd.read_csv(input_file, sep='\t')
-        else:
-            raise ValueError(f"不支持的文件格式: {input_file}")
+        # print(f"正在读取表格文件: {input_file}")
+        # if input_file.endswith('.parquet'):
+        #     df = pd.read_parquet(input_file)
+        # elif input_file.endswith('.csv'):
+        #     df = pd.read_csv(input_file)
+        # elif input_file.endswith('.tsv'):
+        #     df = pd.read_csv(input_file, sep='\t')
+        # else:
+        #     raise ValueError(f"不支持的文件格式: {input_file}")
         
         # 按染色体筛选数据
         if target_chr is not None:
@@ -103,8 +103,8 @@ def table_to_mtx(input_file, output_file=None, target_chr=None):
                 print(f"警告: 行{idx+1}的数据格式不正确，已跳过: {e}")
         
         # 生成MTX文件路径
-        if output_file is None:
-            output_file = input_file.rsplit('.', 1)[0] + '.mtx'
+        # if output_file is None:
+        #     output_file = input_file.rsplit('.', 1)[0] + '.mtx'
         
         print(f"正在生成MTX文件: {output_file}")
         
@@ -112,7 +112,7 @@ def table_to_mtx(input_file, output_file=None, target_chr=None):
         with open(output_file, 'w') as f:
             # 写入头部信息
             f.write('%%MatrixMarket matrix coordinate real general\n')
-            f.write(f'%% 输入文件: {os.path.basename(input_file)}\n')
+            f.write(f'%% 输入文件: {os.path.basename(output_file)}\n')
             f.write(f'%% 坐标范围: {min_val} 到 {max_val}\n')
             
             # 计算非零元素数量
@@ -148,11 +148,18 @@ if __name__ == "__main__":
     # 示例：将表格转换为MTX
     target_chr = '7'  # 目标染色体
     # 请将下面的文件路径替换为您实际的表格文件路径
-    input_file = '../files/MICC_HEKwt_hg19_10000.parquet'  # 输入文件路径
+    # input_file = '../files/MICC_HEKwt_hg19_10000.parquet'  # 输入文件路径
+    # Read the first split file
+    df_part1 = pd.read_parquet("../files/MICC_HEKwt_hg19_10000_part1.parquet")
+
+    # Read the second split file
+    df_part2 = pd.read_parquet("../files/MICC_HEKwt_hg19_10000_part2.parquet")
+    
+    df_combined = pd.concat([df_part1, df_part2], ignore_index=True)
     output_file = '../files/MICC_HEKwt_chr'+target_chr+'_10000.mtx'       # 输出MTX文件路径
     
     # 调用函数进行转换（不再需要指定max_dim参数）
-    result = table_to_mtx(input_file, output_file, target_chr=target_chr)
+    result = table_to_mtx(df_combined, output_file, target_chr=target_chr)
     
     if result:
         print("转换完成！")
