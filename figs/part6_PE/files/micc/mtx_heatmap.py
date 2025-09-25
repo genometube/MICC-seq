@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import matplotlib.colors as colors
 from scipy.io import mmread
 import os
+import cv2
 
 # 设置工作目录
 def set_working_directory(path):
@@ -17,10 +18,52 @@ def set_working_directory(path):
         print(f"设置工作目录失败: {e}")
         return False
 
+# 使用OpenCV进行线模式信号的去噪和增强
+def enhance_line_pattern(image_data, denoise_strength=5, line_thickness=2, connect_gaps=1):
+    """
+    使用OpenCV对线模式信号进行去噪和增强
+    参数:
+    - image_data: 输入图像数据（2D数组）
+    - denoise_strength: 高斯模糊去噪强度（0-100）
+    - line_thickness: 线宽（用于形态学操作）
+    - connect_gaps: 连接断线的程度（0-5）
+    返回:
+    - 增强后的图像数据
+    """
+    try:
+        print("使用OpenCV进行线模式信号增强...")
+        
+        # 归一化图像数据到0-255范围
+        img_norm = cv2.normalize(image_data, None, 0, 255, cv2.NORM_MINMAX).astype(np.uint8)
+        
+        # 1. 高斯模糊去噪
+        if denoise_strength > 0:
+            kernel_size = max(3, denoise_strength // 10 * 2 + 1)  # 确保为奇数
+            img_denoised = cv2.GaussianBlur(img_norm, (kernel_size, kernel_size), 0)
+            print(f"应用高斯模糊去噪，内核大小: {kernel_size}")
+        else:
+            img_denoised = img_norm.copy()
+        
+        # 2. 自适应阈值化，突出线条
+        img_thresh = cv2.adaptiveThreshold(
+            img_denoised, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 11, 2
+        )
+        print("应用自适应阈值化")
+        
+        # 直接使用阈值化后的图像，不再进行形态学操作和边缘检测
+        # 转回原始数据范围
+        # result = cv2.normalize(img_thresh, None, np.min(image_data), np.max(image_data), cv2.NORM_MINMAX)
+        result = img_denoised
+        return result
+    except Exception as e:
+        print(f"OpenCV图像处理出错: {e}")
+        return image_data  # 如果处理失败，返回原始数据
+
 # 读取MTX文件并绘制热图
-def plot_mtx_heatmap(mtx_file, x_start=14800, x_end=15000, y_start=14800, y_end=15000, 
-                     output_image=None, cmap='viridis', figsize=(10, 10), dpi=300,
-                     apply_log_transform=True,make_symmetric=True):
+def plot_mtx_heatmap(mtx_file, x_start=14800, x_end=15200, y_start=14800, y_end=15200, 
+                     output_image=None, cmap='viridis', figsize=(10, 10), dpi=300, 
+                     apply_log_transform=True, make_symmetric=True,use_cv2_enhancement=False, 
+                     denoise_strength=5):
     """
     读取MTX文件并绘制特定范围内的热图
     参数:
@@ -31,6 +74,10 @@ def plot_mtx_heatmap(mtx_file, x_start=14800, x_end=15000, y_start=14800, y_end=
     - cmap: 颜色映射，默认为'viridis'
     - figsize: 图像大小，默认为(10, 10)
     - dpi: 图像分辨率，默认为300
+    - apply_log_transform: 是否应用log10(value + 1)转换，默认为True
+    - make_symmetric: 是否使矩阵对称，默认为True
+    - use_cv2_enhancement: 是否使用OpenCV进行线模式信号增强，默认为False
+    - denoise_strength: OpenCV去噪强度（0-100），默认为5
     """
     try:
         # 读取MTX文件
@@ -87,7 +134,14 @@ def plot_mtx_heatmap(mtx_file, x_start=14800, x_end=15000, y_start=14800, y_end=
             matrix_subset = matrix_subset.astype(np.float64)
             # 应用log10(value + 1)转换
             matrix_subset = np.log10(matrix_subset + 1)
-                
+
+        # 使用OpenCV进行线模式信号增强
+        if use_cv2_enhancement:
+            matrix_subset = enhance_line_pattern(
+                matrix_subset, 
+                denoise_strength=denoise_strength
+            )
+          
         # 创建热图
         plt.figure(figsize=figsize)
         
@@ -120,7 +174,7 @@ def plot_mtx_heatmap(mtx_file, x_start=14800, x_end=15000, y_start=14800, y_end=
             print(f"图像已保存至: {output_image}")
         
         # 显示图像
-        plt.show()
+        # plt.show()
         
         return True
         
@@ -136,9 +190,9 @@ if __name__ == "__main__":
     # 示例：读取MTX文件并绘制热图
     # 请将下面的文件路径替换为您实际的MTX文件路径
     mtx_file = 'MICC_hek_WT_chr7_seg_non_singleton.mtx'  # 输入MTX文件路径
-    output_image = 'matrix_heatmap_14800-15200.png'  # 输出图像文件路径
+    output_image = 'matrix_heatmap_14800_15000.png'  # 输出图像文件路径
     
-    # 调用函数绘制热图（范围14800到15200）
+    # 调用函数绘制热图（范围14800到15000）
     result = plot_mtx_heatmap(
         mtx_file=mtx_file,
         x_start=14800, 
@@ -149,8 +203,10 @@ if __name__ == "__main__":
         cmap='Reds',  # 可以尝试不同的颜色映射，如'jet', 'RdBu', 'hot'等
         figsize=(12, 10),
         dpi=300,
-        apply_log_transform=True,
-        make_symmetric=True
+        apply_log_transform=True,  # 设置为True以应用log10(value + 1)转换
+        make_symmetric=True,  # 设置为True以创建对称矩阵
+        use_cv2_enhancement=False,  # 设置为True以启用OpenCV线模式增强
+        denoise_strength=0.1  # 去噪强度（0-100）
     )
     
     if result:
