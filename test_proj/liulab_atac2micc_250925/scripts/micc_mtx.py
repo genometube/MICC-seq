@@ -148,14 +148,12 @@ if __name__ == "__main__":
     # 示例：将表格转换为MTX
     target_chr = '7'  # 目标染色体
     # 请将下面的文件路径替换为您实际的表格文件路径
-    # input_file = '../files/MICC_HEKwt_hg19_10000.parquet'  # 输入文件路径
-    # Read the first split file
     df_part1 = pd.read_parquet("../files/MICC_HEKwt_hg19_10000_part1.parquet")
-
-    # Read the second split file
     df_part2 = pd.read_parquet("../files/MICC_HEKwt_hg19_10000_part2.parquet")
-    
-    df_combined = pd.concat([df_part1, df_part2], ignore_index=True)
+    df_part3 = pd.read_parquet("../files/MICC_HEKwt_hg19_10000_part3.parquet")
+    df_part4 = pd.read_parquet("../files/MICC_HEKwt_hg19_10000_part4.parquet")
+
+    df_combined = pd.concat([df_part1, df_part2, df_part3, df_part4], ignore_index=True)
     output_file = '../files/MICC_HEKwt_chr'+target_chr+'_10000.mtx'       # 输出MTX文件路径
     
     # 调用函数进行转换（不再需要指定max_dim参数）
