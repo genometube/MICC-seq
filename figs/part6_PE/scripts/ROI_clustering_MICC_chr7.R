@@ -142,7 +142,7 @@ p7<-ggplot(pos_pe_adj_count_sig, aes(x = log2(count),group=PE_type,fill=PE_type)
 p1_grob <- grid.grabExpr(draw(p1))  # 捕获绘图对象
 
 dev.off()
-png('micc_pe_signal.png')
-plot_grid(p1_grob, p2, p3, p4, p5, p6, p7, ncol = 3, 
+png('micc_pe_signal.png',width=700,height=1000)
+plot_grid(p1_grob, p2, p3, p4, p5, p6, p7, ncol = 2, 
           labels = c("A", "B", "C", "D", "E","F",'G'))
 dev.off()
