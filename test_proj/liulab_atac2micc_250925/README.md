@@ -10,7 +10,11 @@
 #### HEK293/NIH3T3 MICC-seq
 [HEK293_micc.part1.parquet](files/MICC_HEKwt_hg19_10000_part1.parquet) <br>
 [HEK293_micc.part2.parquet](files/MICC_HEKwt_hg19_10000_part2.parquet) <br>
-[NIH3T3_micc.parquet](files/MICC_NIH3T3_mm10_10000.parquet)
+[HEK293_micc.part3.parquet](files/MICC_HEKwt_hg19_10000_part3.parquet) <br>
+[HEK293_micc.part4.parquet](files/MICC_HEKwt_hg19_10000_part4.parquet) <br>
+
+[NIH3T3_micc.part1.parquet](files/MICC_NIH3T3_mm10_10000_part1.parquet) <br>
+[NIH3T3_micc.part2.parquet](files/MICC_NIH3T3_mm10_10000_part2.parquet)
 
 ---
 ### Dataset description
