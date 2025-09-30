@@ -3,7 +3,6 @@ library(plyr)
 library(dplyr)
 library(reshape2)
 library(zoo)
-library(pheatmap)
 library(Matrix)
 library(data.table)
 # library(strawr)
@@ -20,7 +19,7 @@ library(gridGraphics)
 library(bedtoolsr)
 options(bedtools.path = "/research/xieyeming1/software/Miniconda/envs/fyt_py311/bin/")
 
-# hgd()
+hgd()
 setwd('/research/xieyeming1/proj_2025/MICC_paper/genometube/MICC-seq/figs/part6_PE/files/micc')
 
 ####################### 2D mtx #######################
@@ -59,7 +58,7 @@ p1<-Heatmap(log_mtx,
         show_column_names = FALSE,
         heatmap_legend_param = list(title =paste0(ROI_L,'_',ROI_R,"\nlog10(count+1)")))
 # show_heatmap_legend = FALSE,
-
+p1
 # subsample 100000 rows from mtx_dt
 dt_subsample<-mtx_dt[sample(1:nrow(mtx_dt),1000000),]
 
@@ -68,6 +67,82 @@ p2<-ggplot(dt_subsample, aes(x = log10(count))) +
   geom_density(fill = "blue", alpha = 0.5) +
   labs(title = "Density Plot of count", y = "Density") +
   theme_minimal()
+
+
+# Apply non-local means denoising
+library(imager)
+library(aws)
+
+# Convert matrix to image format
+log_img <- as.cimg(log_mtx)
+
+denoised_log_mtx_obj<-nlmeans(log_mtx, 2, 0.1, patchhw = 1, searchhw = 6, pd = NULL)
+# ?nlmeans
+# setCores='number of threads'
+
+denoised_log_mtx<-denoised_log_mtx_obj$theta
+mtx_compare<- t(log_mtx) + denoised_log_mtx
+
+breaks_vec<-c(0,0.5,0.75,1)
+color_vec<-c('yellow1','red4','purple4','black')
+# Plot with ComplexHeatmap
+p<-Heatmap(mtx_compare,
+        show_heatmap_legend = TRUE,
+        col = colorRamp2(breaks_vec, color_vec),
+        cluster_rows = FALSE,
+        cluster_columns = FALSE,
+        show_row_names = FALSE,
+        show_column_names = FALSE,
+        heatmap_legend_param = list(title =paste0(ROI_L,'_',ROI_R,"\nlog10(count+1)")))
+p
+
+# param_combinations <- list(
+#   list(h=2, sigma=0.1, patchhw=1, searchhw=7),
+#   list(h=1, sigma=0.1, patchhw=1, searchhw=3),
+#   list(h=1, sigma=0.1, patchhw=1, searchhw=9),
+#   list(h=1, sigma=0.1, patchhw=1, searchhw=7)
+# )
+
+# # Create figure for subplots
+# plt_list <- list()
+# for (i in seq_along(param_combinations)) {
+#   params <- param_combinations[[i]]
+  
+#   # Apply denoising with current parameters
+#   denoised_log_mtx_obj <- nlmeans(log_mtx, 
+#                                  params$h, 
+#                                  params$sigma, 
+#                                  patchhw=params$patchhw, 
+#                                  searchhw=params$searchhw, 
+#                                  pd=NULL)
+  
+#   denoised_log_mtx <- denoised_log_mtx_obj$theta
+#   mtx_compare <- t(log_mtx) + denoised_log_mtx
+  
+#   # Create heatmap with current parameters
+#   plt_list[[i]] <- Heatmap(mtx_compare,
+#     show_heatmap_legend = FALSE,
+#     col = colorRamp2(c(0, 1), c("white", "red")),
+#     cluster_rows = FALSE,
+#     cluster_columns = FALSE,
+#     show_row_names = FALSE,
+#     show_column_names = FALSE,
+#     column_title = paste0("h=", params$h, ", σ=", params$sigma, 
+#                          "\npatch=", params$patchhw, ", search=", params$searchhw)
+#   )
+# }
+
+# # Arrange plots in grid
+# grid.newpage()
+# pushViewport(viewport(layout = grid.layout(2, 2)))
+# for (i in seq_along(plt_list)) {
+#   row <- ((i-1) %/% 2) + 1
+#   col <- ((i-1) %% 2) + 1
+#   pushViewport(viewport(layout.pos.row = row, layout.pos.col = col))
+#   draw(plt_list[[i]], newpage = FALSE)
+#   popViewport()
+# }
+# popViewport()
 
 ####################### 1D peak #######################
 hek_miccPeak<-fread('../../../../db/peaks/hekMiccHia5_3lanes.narrowpeak')
@@ -146,3 +221,7 @@ png('micc_pe_signal.png',width=700,height=1000)
 plot_grid(p1_grob, p2, p3, p4, p5, p6, p7, ncol = 2, 
           labels = c("A", "B", "C", "D", "E","F",'G'))
 dev.off()
+
+
+
+

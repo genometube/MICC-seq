@@ -1,0 +1,76 @@
+nlmeans                  package:aws                   R Documentation
+
+_N_L_M_e_a_n_s _f_i_l_t_e_r _i_n _1_D/_2_D/_3_D
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     Implements the Non-Local-Means Filter of Buades et al 2005
+
+_U_s_a_g_e:
+
+     nlmeans(x, lambda, sigma, patchhw = 1, searchhw = 7, pd = NULL)
+     
+_A_r_g_u_m_e_n_t_s:
+
+       x: 1, 2 or 3-dimensional array of obseved response (image
+          intensity) data.
+
+  lambda: scale factor for kernel in image space.
+
+   sigma: error standard deviation (for additive Gaussian errors).
+
+ patchhw: Half width of patches in each dimension (patchsize is
+          ‘(2*patchhw+1)^d’ for d-dimensional array).
+
+searchhw: Half width of search area (size of search area is
+          ‘(2searchhw+1)^d’ for d-dimensional array)).
+
+      pd: If ‘pd < (2*patchhw+1)^d’ use ‘pd’ principal components
+          instead of complete patches.
+
+_D_e_t_a_i_l_s:
+
+     The implementation follows the description of the Non-Local-Means
+     Filter of Buades et al 2005 on
+     <http://www.numerical-tours.com/matlab/denoisingadv_6_nl_means/#biblio>
+     that incorporates dimension reduction for patch comparisons by
+     PCA.
+
+_V_a_l_u_e:
+
+     A list of class ‘"nlmeans"’ with components
+
+   theta: Denoised array
+
+  lambda: Scale parameter used
+
+   sigma: The error standard deviation
+
+ patchhw: Half width of patches
+
+      pd: Effective patchsize used
+
+searchhw: Half width of search area
+
+_N_o_t_e:
+
+     use ‘setCores='number of threads'’ to enable parallel execution.
+
+_A_u_t_h_o_r(_s):
+
+     Joerg Polzehl, <mailto:polzehl@wias-berlin.de>,
+     <https://www.wias-berlin.de/people/polzehl/>
+
+_R_e_f_e_r_e_n_c_e_s:
+
+     J. Polzehl, K. Papafitsoros, K. Tabelow (2020). Patch-Wise
+     Adaptive Weights Smoothing in R, Journal of Statistical Software,
+     95(6), 1-27. doi:10.18637/jss.v095.i06 .
+
+     A. Buades, B. Coll and J. M. Morel (2006). A review of image
+     denoising algorithms, with a new one. Simulation, 4, 490-530.
+     DOI:10.1137/040616024.
+
+     <http://www.numerical-tours.com/matlab/denoisingadv_6_nl_means/#biblio>
+
+
