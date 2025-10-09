@@ -21,10 +21,10 @@ library(gridGraphics)
 
 npg_colors <- pal_npg()(10)
 # hgd()
-setwd('/research/xieyeming1/proj_2025/MICC_paper/genometube/MICC-seq/figs/section1/scripts')
+setwd('/research/xieyeming1/proj_2025/MICC_paper/genometube/MICC-seq/figs/part1_Micc1D/scripts')
 options(bedtools.path = "/research/xieyeming1/software/Miniconda/envs/fyt_py311/bin/")
 
-hg19_10kBin<-'../../../db/peaks/hg19_windows_10000.bed'
+hg19_10kBin<-'../../../db/peaks/hg19_windows_10000.bed.gz'
 hekMicc1h<-'../../../db/peaks/HekMiccEcoG1h.narrowpeak'
 hekMicc2h<-'../../../db/peaks/HekMiccEcoG2h.narrowpeak'
 hekMicc3h<-'../../../db/peaks/HekMiccEcoG3h.narrowpeak'
@@ -49,12 +49,12 @@ p_euler_upset_hek$upset
 
 upset_hek_grob <- grid.grabExpr(draw(p_euler_upset_hek$upset))
 
-png('../files/hekMicc1h2h3h_overlap.png',width = 15,height = 8,units = 'in',res = 300)
-plot_grid(p_euler_upset_hek$euler, upset_hek_grob, ncol = 2, labels = c("A", "B"))
+png('../files/hekMicc1h2h3h_overlap.png',width = 12,height = 12,units = 'in',res = 300)
+plot_grid(p_euler_upset_hek$euler, upset_hek_grob, ncol = 1, labels = c("A", "B"),rel_heights = c(2, 1))
 dev.off()
 
-pdf('../files/hekMicc1h2h3h_overlap.pdf',width = 15,height = 8)
-plot_grid(p_euler_upset_hek$euler, upset_hek_grob, ncol = 2, labels = c("A", "B"))
+pdf('../files/hekMicc1h2h3h_overlap.pdf',width = 12,height = 12)
+plot_grid(p_euler_upset_hek$euler, upset_hek_grob, ncol = 1, labels = c("A", "B"),rel_heights = c(2, 1))
 dev.off()
 
 
