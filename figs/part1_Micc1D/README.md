@@ -28,7 +28,7 @@ We subsequently evaluated MICC-seq's capability to detect accessible chromatin r
 <img src="files/deeptools_out/hekMiccEcoG_3lanes_dnase.png" width="150">
 <img src="files/deeptools_out/hekMiccEcoG_3lanes_tss_high.png" width="150">
 <img src="files/deeptools_out/hekMiccEcoG_3lanes_tss_low.png" width="150">
-<img src="files/deeptools_out/hekMiccEcoG_3lanes_ctcf.png" width="150"> <br>
+<img src="files/deeptools_out/hekMiccEcoG_3lanes_ctcf.png" width="150">
 
 <img src="files/deeptools_out/hekMiccEcoG_3lanes_h3k27me3.png" width="150">
 <img src="files/deeptools_out/hekMiccEcoG_3lanes_RNAPolII.png" width="150">
