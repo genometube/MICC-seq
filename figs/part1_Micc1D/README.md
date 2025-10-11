@@ -24,11 +24,7 @@ We subsequently evaluated MICC-seq's capability to detect accessible chromatin r
 ---
  Both transcription start sites (TSS) and CTCF binding sites, established accessible chromatin markers, demonstrated 4-6 fold signal enrichment in MICC-seq data. Additional analysis identified that MICC-seq produced a 3-4 fold enhancement for chromatin interactions at active transcription sites (RNApolII peaks) and regions featuring active chromatin epigenetic markers, particularly H3K4me1/3 and H3K27ac (Supplementary Figure 2). Quantitative assessment corroborated these findings, demonstrating a correlation coefficient of 0.61 between MICC-seq enrichment signals at TSS regions and ATAC-seq data, with a more pronounced correlation of 0.77 with DNase-seq data (Fig.1D). Importantly, experimental replicates showed an exceptionally high correlation of approximately 0.98, confirming strong methodological reproducibility (Fig.1D). Examination of representative genomic loci validated MICC-seq's capacity to accurately map accessible chromatin interactions, establishing its effectiveness as a robust analytical tool for accessible chromatin architecture studies.
 
-<img src="files/deeptools_out/hekMiccEcoG_3lanes_atac.png" width="150">
-<img src="files/deeptools_out/hekMiccEcoG_3lanes_dnase.png" width="150">
-<img src="files/deeptools_out/hekMiccEcoG_3lanes_tss_high.png" width="150">
-<img src="files/deeptools_out/hekMiccEcoG_3lanes_tss_low.png" width="150">
-<img src="files/deeptools_out/hekMiccEcoG_3lanes_ctcf.png" width="150">
+<img src="files/deeptools_out/hekMiccEcoG_3lanes_atac.png" width="150"><img src="files/deeptools_out/hekMiccEcoG_3lanes_dnase.png" width="150"><img src="files/deeptools_out/hekMiccEcoG_3lanes_tss_high.png" width="150"><img src="files/deeptools_out/hekMiccEcoG_3lanes_tss_low.png" width="150"><img src="files/deeptools_out/hekMiccEcoG_3lanes_ctcf.png" width="150">
 
 <img src="files/deeptools_out/hekMiccEcoG_3lanes_h3k27me3.png" width="150">
 <img src="files/deeptools_out/hekMiccEcoG_3lanes_RNAPolII.png" width="150">
