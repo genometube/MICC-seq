@@ -11,8 +11,7 @@ We first used the DpnI to digested the HEK293 genome to test if the background G
 
 We then conducted optimization of the Hia5 labeling duration, a parameter essential for experimental sensitivity. Our analytical findings revealed that a 2-hour labeling period produced 30% enhanced signal intensity at transcription start sites when compared to a 1-hour protocol. 
 
-<img src="files/hekMicc1h2h3h_overlap.png" width="500">
-<img src="files/hek1h2h3h_bulk_QC_metrics.png" width="500"><img src="files/deeptools_out/HekMicc1h2h3h_atac.png" width="500">
+<img src="files/hekMicc1h2h3h_overlap.png" width="500"><img src="files/hek1h2h3h_bulk_QC_metrics.png" width="500"><img src="files/deeptools_out/HekMicc1h2h3h_atac.png" width="500">
 
 This improvement in signal-to-noise ratio allowed us to achieve greater detection accuracy across the genome. This optimized methodology also successfully identified approximately 2,000 additional peaks with verified correspondence to ATAC-seq/DNase-seq results. Notably, extending the labeling duration to 3 hours did not demonstrate any significant improvement over the 2-hour protocol, suggesting we had reached optimal labeling efficiency.
 
@@ -25,6 +24,5 @@ We subsequently evaluated MICC-seq's capability to detect accessible chromatin r
 
 <img src="files/deeptools_out/hekMiccEcoG_3lanes_atac.png" width="150"><img src="files/deeptools_out/hekMiccEcoG_3lanes_dnase.png" width="150"><img src="files/deeptools_out/hekMiccEcoG_3lanes_tss_high.png" width="150"><img src="files/deeptools_out/hekMiccEcoG_3lanes_tss_low.png" width="150"><img src="files/deeptools_out/hekMiccEcoG_3lanes_ctcf.png" width="150">
 
-<img src="files/deeptools_out/hekMiccEcoG_3lanes_h3k27me3.png" width="150"><img src="files/deeptools_out/hekMiccEcoG_3lanes_RNAPolII.png" width="150"><img src="files/deeptools_out/hekMiccEcoG_3lanes_h3k36me3.png" width="150"><img src="files/deeptools_out/hekMiccEcoG_3lanes_h3k4me1.png" width="150">
-<img src="files/deeptools_out/hekMiccEcoG_3lanes_h3k4me3.png" width="150"><img src="files/deeptools_out/hekMiccEcoG_3lanes_h3k27ac.png" width="150"><img src="files/deeptools_out/hekMiccEcoG_3lanes_h3k9me3.png" width="150">
+<img src="files/deeptools_out/hekMiccEcoG_3lanes_h3k27me3.png" width="150"><img src="files/deeptools_out/hekMiccEcoG_3lanes_RNAPolII.png" width="150"><img src="files/deeptools_out/hekMiccEcoG_3lanes_h3k36me3.png" width="150"><img src="files/deeptools_out/hekMiccEcoG_3lanes_h3k4me1.png" width="150"><img src="files/deeptools_out/hekMiccEcoG_3lanes_h3k4me3.png" width="150"><img src="files/deeptools_out/hekMiccEcoG_3lanes_h3k27ac.png" width="150"><img src="files/deeptools_out/hekMiccEcoG_3lanes_h3k9me3.png" width="150">
 
