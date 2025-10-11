@@ -11,7 +11,7 @@ We first used the DpnI to digested the HEK293 genome to test if the background G
 
 We then conducted optimization of the Hia5 labeling duration, a parameter essential for experimental sensitivity. Our analytical findings revealed that a 2-hour labeling period produced 30% enhanced signal intensity at transcription start sites when compared to a 1-hour protocol. 
 
-<img src="files/hekMicc1h2h3h_overlap.png" width="500"><img src="files/hek1h2h3h_bulk_QC_metrics.png" width="500"><img src="files/deeptools_out/HekMicc1h2h3h_atac.png" width="300">
+<img src="files/hekMicc1h2h3h_overlap.png" width="400"><img src="files/deeptools_out/HekMicc1h2h3h_atac.png" width="300"><img src="files/hek1h2h3h_bulk_QC_metrics.png" width="400">
 
 This improvement in signal-to-noise ratio allowed us to achieve greater detection accuracy across the genome. This optimized methodology also successfully identified approximately 2,000 additional peaks with verified correspondence to ATAC-seq/DNase-seq results. Notably, extending the labeling duration to 3 hours did not demonstrate any significant improvement over the 2-hour protocol, suggesting we had reached optimal labeling efficiency.
 
